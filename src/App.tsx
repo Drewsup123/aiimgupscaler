@@ -4,7 +4,7 @@ import { Route, Routes } from "react-router";
 
 function App() {
     return (
-        <>
+        <div className="App">
             <Header />
             <ul className="bg-bubbles">
                 <li></li>
@@ -19,7 +19,7 @@ function App() {
                 <li></li>
             </ul>
             <Routes></Routes>
-        </>
+        </div>
     );
 }
 
