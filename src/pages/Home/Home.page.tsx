@@ -36,6 +36,10 @@ const HomePage = () => {
                             <p>{file.name}</p>
                             <p>{convertBytesToSize(file.size)}</p>
                         </div>
+                        <div className={styles.actionsContainer}>
+                            <button className={styles.startBtn}>Start</button>
+                            <button className={styles.removeBtn}>Remove</button>
+                        </div>
                     </div>
                 ))}
             </div>

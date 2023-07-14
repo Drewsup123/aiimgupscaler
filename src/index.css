@@ -144,6 +144,10 @@ body {
     box-sizing: border-box;
 }
 
+body * {
+    z-index: 1;
+}
+
 .route {
     margin-top: 80px;
     padding: 0px 5%;
