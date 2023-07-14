@@ -1,6 +1,11 @@
 import React from "react";
 import Header from "./components/Header/header.component";
 import { Route, Routes } from "react-router";
+import HomePage from "./pages/Home/Home.page";
+import WhyPage from "./pages/Why.page";
+import PricingPage from "./pages/Pricing.page";
+import TermsAndConditionsPage from "./pages/TermsAndConditions.page";
+import AccountPage from "./pages/Account.page";
 
 function App() {
     return (
@@ -18,7 +23,16 @@ function App() {
                 <li></li>
                 <li></li>
             </ul>
-            <Routes></Routes>
+            <Routes>
+                <Route path="/" Component={HomePage} />
+                <Route path="/why" Component={WhyPage} />
+                <Route path="/pricing" Component={PricingPage} />
+                <Route
+                    path="/terms-and-condition"
+                    Component={TermsAndConditionsPage}
+                />
+                <Route path="/account" Component={AccountPage} />
+            </Routes>
         </div>
     );
 }
