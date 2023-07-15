@@ -40,6 +40,7 @@ const ImageCard = (props: IProps) => {
                 console.log("Upscaled Image : ", upscaledImgSrc);
                 setUpscaledBase64(upscaledImgSrc);
                 setLoading(false);
+                upscaler.dispose();
             });
     };
 
@@ -62,11 +63,8 @@ const ImageCard = (props: IProps) => {
                 <p>{convertBytesToSize(file.file.size)}</p>
             </div>
             <div className={styles.actionsContainer}>
-                <button className={styles.startBtn} onClick={startUpscale}>
-                    {loading ? <DoubleLoader /> : "Start"}
-                </button>
                 {upscaledBase64 ? (
-                    <button className={styles.removeBtn} onClick={handleOpen}>
+                    <button className={styles.openBtn} onClick={handleOpen}>
                         Open
                     </button>
                 ) : (
@@ -76,6 +74,11 @@ const ImageCard = (props: IProps) => {
                         disabled={loading}
                     >
                         Remove
+                    </button>
+                )}
+                {upscaledBase64 ? null : (
+                    <button className={styles.startBtn} onClick={startUpscale}>
+                        {loading ? "Upscaling..." : "Start"}
                     </button>
                 )}
             </div>
