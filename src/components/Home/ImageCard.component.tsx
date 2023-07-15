@@ -35,7 +35,7 @@ const ImageCard = (props: IProps) => {
         setLoading(true);
         const fileInput = await fileToInput(file.file);
         upscaler
-            .upscale(fileInput, { patchSize: 32, padding: 8 })
+            .upscale(fileInput, { patchSize: 124, padding: 8 })
             .then((upscaledImgSrc) => {
                 console.log("Upscaled Image : ", upscaledImgSrc);
                 setUpscaledBase64(upscaledImgSrc);
