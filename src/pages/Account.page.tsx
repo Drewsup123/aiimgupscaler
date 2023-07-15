@@ -1,6 +1,6 @@
 const AccountPage = () => {
     return (
-        <div>
+        <div className="route">
             <h1>Account page</h1>
         </div>
     );

@@ -1,6 +1,6 @@
 const PricingPage = () => {
     return (
-        <div>
+        <div className="route">
             <h1>Pricing page</h1>
         </div>
     );

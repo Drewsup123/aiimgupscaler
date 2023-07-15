@@ -1,6 +1,6 @@
 const WhyPage = () => {
     return (
-        <div>
+        <div className="route">
             <h1>Why page</h1>
         </div>
     );

@@ -1,6 +1,6 @@
 const TermsAndConditionsPage = () => {
     return (
-        <div>
+        <div className="route">
             <h1>Terns and conditions page</h1>
         </div>
     );

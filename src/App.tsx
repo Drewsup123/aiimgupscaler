@@ -6,6 +6,7 @@ import WhyPage from "./pages/Why.page";
 import PricingPage from "./pages/Pricing.page";
 import TermsAndConditionsPage from "./pages/TermsAndConditions.page";
 import AccountPage from "./pages/Account.page";
+import SamplePage from "./pages/Sample/Sample.page";
 
 function App() {
     return (
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/" Component={HomePage} />
                 <Route path="/why" Component={WhyPage} />
                 <Route path="/pricing" Component={PricingPage} />
+                <Route path="/samples" Component={SamplePage} />
                 <Route
                     path="/terms-and-condition"
                     Component={TermsAndConditionsPage}
