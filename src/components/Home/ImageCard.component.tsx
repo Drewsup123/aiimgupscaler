@@ -15,6 +15,7 @@ const ImageCard = (props: IProps) => {
     const { file, handleRemove } = props;
     const [loading, setLoading] = useState(false);
     const [upscaledBase64, setUpscaledBase64] = useState("");
+    const [percent, setPercent] = useState(0);
     const upscaler = new Upscaler();
 
     const fileToInput = (file: File) => {
@@ -35,7 +36,14 @@ const ImageCard = (props: IProps) => {
         setLoading(true);
         const fileInput = await fileToInput(file.file);
         upscaler
-            .upscale(fileInput, { patchSize: 124, padding: 8 })
+            .upscale(fileInput, {
+                patchSize: 124,
+                padding: 8,
+                progress: (percent: any) => {
+                    console.log("Percent : ", percent);
+                    setPercent(percent * 100);
+                },
+            })
             .then((upscaledImgSrc) => {
                 console.log("Upscaled Image : ", upscaledImgSrc);
                 setUpscaledBase64(upscaledImgSrc);
@@ -52,7 +60,14 @@ const ImageCard = (props: IProps) => {
     };
 
     return (
-        <div className={styles.filePreviewWrapper}>
+        <div
+            className={styles.filePreviewWrapper}
+            style={
+                {
+                    // background: `linear-gradient(to right, red ${percent}%, #fff ${percent}%)`,
+                }
+            }
+        >
             <img
                 src={URL.createObjectURL(file.file)}
                 alt={file.file.name}
@@ -78,7 +93,7 @@ const ImageCard = (props: IProps) => {
                 )}
                 {upscaledBase64 ? null : (
                     <button className={styles.startBtn} onClick={startUpscale}>
-                        {loading ? "Upscaling..." : "Start"}
+                        {loading ? `Upscaling... (${percent}%)` : "Start"}
                     </button>
                 )}
             </div>
