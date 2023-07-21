@@ -42,8 +42,8 @@ const HomePage = () => {
                 <sub>
                     Elevate and refine your images using cutting-edge AI
                     technology with our AI Image Upscaler. Now offering batch
-                    processing capabilities. Upscaling multiple images is as
-                    straightforward as compressing them with TINYPNG!
+                    processing capabilities. Upscaling multiple images is fast
+                    and easy!
                 </sub>
             </div>
             <StyledDropzone onDrop={handleDrop} />

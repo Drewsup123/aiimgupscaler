@@ -4,7 +4,9 @@ import styles from "./header.module.sass";
 const Header = () => {
     return (
         <header className={styles.header}>
-            <span className={styles.siteName}>AI Image Upscaler</span>
+            <Link to="/" className={styles.siteName}>
+                AI Image Upscaler
+            </Link>
             <div className={styles.rightLinks}>
                 <Link to="/samples">Samples</Link>
                 <Link to="/why">Why Choose Us</Link>

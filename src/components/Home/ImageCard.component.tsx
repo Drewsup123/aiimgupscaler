@@ -17,7 +17,6 @@ const ImageCard = (props: IProps) => {
     const [loading, setLoading] = useState(false);
     const [upscaledUrl, setUpscaledUrl] = useState("");
     const [downloading, setDownloading] = useState(false);
-    // const upscaler = new Upscaler();
 
     const startUpscale = async () => {
         const imageUrl: string = await convertToBase64(file.file);
@@ -39,9 +38,6 @@ const ImageCard = (props: IProps) => {
 
     const handleOpen = () => {
         if (!upscaledUrl) return;
-        // const win = window.open();
-        // //@ts-ignore
-        // win.document.write('<img src="' + upscaledBase64 + '"/>');
         openImage(upscaledUrl, "upscaled_" + file.file.name);
     };
 
