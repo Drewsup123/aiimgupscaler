@@ -3,10 +3,7 @@ import { IFile } from "../../pages/Home/Home.page";
 import convertToBase64, {
     convertBytesToSize,
 } from "../../utils/conversion.util";
-// import Upscaler from "upscaler";
-// import * as tf from "@tensorflow/tfjs";
 import { useState } from "react";
-// import DoubleLoader from "../Loaders/DoubleLoader.component";
 import deepai from "deepai";
 import { downloadImage, openImage } from "../../utils/download.util";
 
@@ -80,7 +77,7 @@ const ImageCard = (props: IProps) => {
                             Open
                         </button>
                         <button
-                            className={styles.openBtn}
+                            className={styles.downloadBtn}
                             onClick={handleDownload}
                         >
                             {downloading ? "Downloading..." : "Download"}
