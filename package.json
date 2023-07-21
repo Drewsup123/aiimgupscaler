@@ -14,6 +14,7 @@
     "@types/react-dropzone": "^5.1.0",
     "@types/react-router": "^5.1.20",
     "@types/react-router-dom": "^5.3.3",
+    "deepai": "^1.0.21",
     "react": "^18.2.0",
     "react-compare-image": "^3.4.0",
     "react-dom": "^18.2.0",
@@ -49,5 +50,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/deepai": "^1.0.0"
   }
 }

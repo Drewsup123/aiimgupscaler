@@ -1,10 +1,13 @@
 import styles from "../../pages/Home/Home.module.sass";
 import { IFile } from "../../pages/Home/Home.page";
-import { convertBytesToSize } from "../../utils/conversion.util";
-import Upscaler from "upscaler";
-import * as tf from "@tensorflow/tfjs";
+import convertToBase64, {
+    convertBytesToSize,
+} from "../../utils/conversion.util";
+// import Upscaler from "upscaler";
+// import * as tf from "@tensorflow/tfjs";
 import { useState } from "react";
-import DoubleLoader from "../Loaders/DoubleLoader.component";
+// import DoubleLoader from "../Loaders/DoubleLoader.component";
+import deepai from "deepai";
 
 interface IProps {
     file: IFile;
@@ -16,41 +19,49 @@ const ImageCard = (props: IProps) => {
     const [loading, setLoading] = useState(false);
     const [upscaledBase64, setUpscaledBase64] = useState("");
     const [percent, setPercent] = useState(0);
-    const upscaler = new Upscaler();
+    // const upscaler = new Upscaler();
 
-    const fileToInput = (file: File) => {
-        return new Promise<tf.Tensor3D>((resolve, reject) => {
-            const img = new Image();
-            img.src = URL.createObjectURL(file);
-            img.onload = () => {
-                const input = tf.browser.fromPixels(img);
-                resolve(input);
-            };
-            img.onerror = (error) => {
-                reject(error);
-            };
+    const startUpscale = async () => {
+        const imageUrl: string = await convertToBase64(file.file);
+        console.log(imageUrl);
+        await deepai.callStandardApi("torch-srgan", {
+            image: imageUrl,
         });
     };
 
-    const startUpscale = async () => {
-        setLoading(true);
-        const fileInput = await fileToInput(file.file);
-        upscaler
-            .upscale(fileInput, {
-                patchSize: 124,
-                padding: 8,
-                progress: (percent: any) => {
-                    console.log("Percent : ", percent);
-                    setPercent(percent * 100);
-                },
-            })
-            .then((upscaledImgSrc) => {
-                console.log("Upscaled Image : ", upscaledImgSrc);
-                setUpscaledBase64(upscaledImgSrc);
-                setLoading(false);
-                upscaler.dispose();
-            });
-    };
+    // const fileToInput = (file: File) => {
+    //     return new Promise<tf.Tensor3D>((resolve, reject) => {
+    //         const img = new Image();
+    //         img.src = URL.createObjectURL(file);
+    //         img.onload = () => {
+    //             const input = tf.browser.fromPixels(img);
+    //             resolve(input);
+    //         };
+    //         img.onerror = (error) => {
+    //             reject(error);
+    //         };
+    //     });
+    // };
+
+    // const startUpscale = async () => {
+    //     setLoading(true);
+    //     const fileInput = await fileToInput(file.file);
+    //     upscaler
+    //         .upscale(fileInput, {
+    //             patchSize: 124,
+    //             padding: 8,
+    //             progress: (percent: any) => {
+    //                 console.log("Percent : ", percent);
+    //                 setPercent(percent * 100);
+    //             },
+    //         })
+    //         .then((upscaledImgSrc) => {
+    //             console.log("Upscaled Image : ", upscaledImgSrc);
+    //             setUpscaledBase64(upscaledImgSrc);
+    //             setLoading(false);
+    //             upscaler.dispose();
+    //         });
+    // };
 
     const handleOpen = () => {
         if (!upscaledBase64) return;
