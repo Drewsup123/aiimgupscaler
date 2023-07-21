@@ -8,6 +8,7 @@ import convertToBase64, {
 import { useState } from "react";
 // import DoubleLoader from "../Loaders/DoubleLoader.component";
 import deepai from "deepai";
+import { downloadImage, openImage } from "../../utils/download.util";
 
 interface IProps {
     file: IFile;
@@ -17,57 +18,41 @@ interface IProps {
 const ImageCard = (props: IProps) => {
     const { file, handleRemove } = props;
     const [loading, setLoading] = useState(false);
-    const [upscaledBase64, setUpscaledBase64] = useState("");
-    const [percent, setPercent] = useState(0);
+    const [upscaledUrl, setUpscaledUrl] = useState("");
+    const [downloading, setDownloading] = useState(false);
     // const upscaler = new Upscaler();
 
     const startUpscale = async () => {
         const imageUrl: string = await convertToBase64(file.file);
         console.log(imageUrl);
-        await deepai.callStandardApi("torch-srgan", {
-            image: imageUrl,
-        });
+        setLoading(true);
+        deepai
+            .callStandardApi("torch-srgan", {
+                image: imageUrl,
+            })
+            .then((res: any) => {
+                setLoading(false);
+                setUpscaledUrl(res.output_url);
+            })
+            .catch((err: any) => {
+                console.error("Error: ", err);
+                setLoading(false);
+            });
     };
 
-    // const fileToInput = (file: File) => {
-    //     return new Promise<tf.Tensor3D>((resolve, reject) => {
-    //         const img = new Image();
-    //         img.src = URL.createObjectURL(file);
-    //         img.onload = () => {
-    //             const input = tf.browser.fromPixels(img);
-    //             resolve(input);
-    //         };
-    //         img.onerror = (error) => {
-    //             reject(error);
-    //         };
-    //     });
-    // };
-
-    // const startUpscale = async () => {
-    //     setLoading(true);
-    //     const fileInput = await fileToInput(file.file);
-    //     upscaler
-    //         .upscale(fileInput, {
-    //             patchSize: 124,
-    //             padding: 8,
-    //             progress: (percent: any) => {
-    //                 console.log("Percent : ", percent);
-    //                 setPercent(percent * 100);
-    //             },
-    //         })
-    //         .then((upscaledImgSrc) => {
-    //             console.log("Upscaled Image : ", upscaledImgSrc);
-    //             setUpscaledBase64(upscaledImgSrc);
-    //             setLoading(false);
-    //             upscaler.dispose();
-    //         });
-    // };
-
     const handleOpen = () => {
-        if (!upscaledBase64) return;
-        const win = window.open();
-        //@ts-ignore
-        win.document.write('<img src="' + upscaledBase64 + '"/>');
+        if (!upscaledUrl) return;
+        // const win = window.open();
+        // //@ts-ignore
+        // win.document.write('<img src="' + upscaledBase64 + '"/>');
+        openImage(upscaledUrl, "upscaled_" + file.file.name);
+    };
+
+    const handleDownload = async () => {
+        if (!upscaledUrl) return;
+        setDownloading(true);
+        await downloadImage(upscaledUrl, "upscaled_" + file.file.name);
+        setDownloading(false);
     };
 
     return (
@@ -89,10 +74,18 @@ const ImageCard = (props: IProps) => {
                 <p>{convertBytesToSize(file.file.size)}</p>
             </div>
             <div className={styles.actionsContainer}>
-                {upscaledBase64 ? (
-                    <button className={styles.openBtn} onClick={handleOpen}>
-                        Open
-                    </button>
+                {upscaledUrl && !loading ? (
+                    <>
+                        <button className={styles.openBtn} onClick={handleOpen}>
+                            Open
+                        </button>
+                        <button
+                            className={styles.openBtn}
+                            onClick={handleDownload}
+                        >
+                            {downloading ? "Downloading..." : "Download"}
+                        </button>
+                    </>
                 ) : (
                     <button
                         className={styles.removeBtn}
@@ -102,9 +95,9 @@ const ImageCard = (props: IProps) => {
                         Remove
                     </button>
                 )}
-                {upscaledBase64 ? null : (
+                {upscaledUrl ? null : (
                     <button className={styles.startBtn} onClick={startUpscale}>
-                        {loading ? `Upscaling... (${percent}%)` : "Start"}
+                        {loading ? `Upscaling...` : "Start"}
                     </button>
                 )}
             </div>
