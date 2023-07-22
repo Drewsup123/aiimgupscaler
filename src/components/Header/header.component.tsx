@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styles from "./header.module.sass";
 
 const Header = () => {
@@ -8,9 +8,9 @@ const Header = () => {
                 AI Image Upscaler
             </Link>
             <div className={styles.rightLinks}>
-                <Link to="/samples">Samples</Link>
-                <Link to="/why">Why Choose Us</Link>
-                <Link to="/pricing">Pricing</Link>
+                <NavLink to="/samples">Samples</NavLink>
+                <NavLink to="/why">Why Choose Us</NavLink>
+                <NavLink to="/pricing">Pricing</NavLink>
             </div>
         </header>
     );

@@ -6,6 +6,7 @@ import convertToBase64, {
 import { useEffect, useState } from "react";
 import deepai from "deepai";
 import { downloadImage, openImage } from "../../utils/download.util";
+import { PulseLoader } from "react-spinners";
 
 interface IProps {
     file: IFile;
@@ -83,7 +84,18 @@ const ImageCard = (props: IProps) => {
                             className={styles.downloadBtn}
                             onClick={handleDownload}
                         >
-                            {downloading ? "Downloading..." : "Download"}
+                            {downloading ? (
+                                <>
+                                    Downloading{" "}
+                                    <PulseLoader
+                                        color="#fff"
+                                        size={5}
+                                        style={{ marginLeft: 5 }}
+                                    />
+                                </>
+                            ) : (
+                                "Download"
+                            )}
                         </button>
                     </>
                 ) : (
@@ -97,7 +109,18 @@ const ImageCard = (props: IProps) => {
                 )}
                 {upscaledUrl ? null : (
                     <button className={styles.startBtn} onClick={startUpscale}>
-                        {loading ? `Upscaling...` : "Start"}
+                        {loading ? (
+                            <>
+                                Upscaling{" "}
+                                <PulseLoader
+                                    color="#fff"
+                                    size={5}
+                                    style={{ marginLeft: 5 }}
+                                />
+                            </>
+                        ) : (
+                            "Start"
+                        )}
                     </button>
                 )}
             </div>
