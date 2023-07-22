@@ -3,13 +3,14 @@ import { IFile } from "../../pages/Home/Home.page";
 import convertToBase64, {
     convertBytesToSize,
 } from "../../utils/conversion.util";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import deepai from "deepai";
 import { downloadImage, openImage } from "../../utils/download.util";
 
 interface IProps {
     file: IFile;
     handleRemove: Function;
+    rescaleKey: number;
 }
 
 const ImageCard = (props: IProps) => {
@@ -47,6 +48,12 @@ const ImageCard = (props: IProps) => {
         await downloadImage(upscaledUrl, "upscaled_" + file.file.name);
         setDownloading(false);
     };
+
+    useEffect(() => {
+        if (props.rescaleKey && !upscaledUrl && !loading) {
+            startUpscale();
+        }
+    }, [props.rescaleKey]);
 
     return (
         <div

@@ -12,6 +12,7 @@ export interface IFile {
 
 const HomePage = () => {
     const [files, setFiles] = useState<IFile[]>([]);
+    const [rescaleKey, setRescaleKey] = useState<number>(0);
     const filesRef = useRef<IFile[]>([]);
     if (files) {
         filesRef.current = files;
@@ -35,6 +36,12 @@ const HomePage = () => {
         setFiles(filteredFiles);
     };
 
+    const handleRemoveAll = () => {
+        setFiles([]);
+    };
+
+    const startUpscaleAll = () => {};
+
     return (
         <div className="route">
             <div className={styles.headerSection}>
@@ -47,14 +54,33 @@ const HomePage = () => {
                 </sub>
             </div>
             <StyledDropzone onDrop={handleDrop} />
+            <div className={styles.allPreviewActions}>
+                <button
+                    className={styles.removeBtn}
+                    onClick={() => handleRemoveAll()}
+                >
+                    Remove All
+                </button>
+                <button className={styles.startBtn} onClick={startUpscaleAll}>
+                    Start All
+                </button>
+            </div>
             <div className={styles.filesPreview}>
-                {files.map((file, index) => (
-                    <ImageCard
-                        key={file.id}
-                        file={file}
-                        handleRemove={handleRemove}
-                    />
-                ))}
+                {files.length ? (
+                    files.map((file, index) => (
+                        <ImageCard
+                            key={file.id}
+                            file={file}
+                            handleRemove={handleRemove}
+                            rescaleKey={rescaleKey}
+                        />
+                    ))
+                ) : (
+                    <span className={styles.noFilesText}>
+                        Start selecting files - they will automatically appear
+                        here.
+                    </span>
+                )}
             </div>
         </div>
     );
