@@ -40,7 +40,9 @@ const HomePage = () => {
         setFiles([]);
     };
 
-    const startUpscaleAll = () => {};
+    const startUpscaleAll = () => {
+        setRescaleKey(rescaleKey + 1);
+    };
 
     return (
         <div className="route">
