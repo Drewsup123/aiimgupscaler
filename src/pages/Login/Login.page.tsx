@@ -1,4 +1,5 @@
-import { auth, firebaseClient } from "../../firebase/client";
+import { auth, db, firebaseClient } from "../../firebase/client";
+import { doc, setDoc } from "firebase/firestore";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import useAuth from "../../hooks/useAuth";
 import { UPDATE_AUTH } from "../../contexts/reducers/auth.reducer";
@@ -9,7 +10,7 @@ const LoginPage = () => {
 
     const signInWithGoogle = async () => {
         return await signInWithPopup(auth, provider)
-            .then((result) => {
+            .then(async (result) => {
                 // This gives you a Google Access Token. You can use it to access the Google API.
                 const credential =
                     GoogleAuthProvider.credentialFromResult(result);
@@ -19,6 +20,16 @@ const LoginPage = () => {
                 // IdP data available using getAdditionalUserInfo(result)
                 // ...
                 console.log("Logged In! : ", user, token);
+                await setDoc(
+                    doc(db, "users", user.uid),
+                    {
+                        uid: user.uid,
+                        displayName: user.displayName,
+                        email: user.email,
+                        // test: "test1",
+                    },
+                    { merge: true }
+                );
                 updateAuthState(UPDATE_AUTH, {
                     authenticated: true,
                     user,
