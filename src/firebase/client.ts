@@ -11,6 +11,10 @@ import {
     FIREBASE_STORAGE_BUCKET,
 } from "../constants/keys.constant";
 // TODO: Add SDKs for Firebase products that you want to use
+import "firebase/auth";
+import "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
+import { getAuth } from "firebase/auth";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
@@ -26,5 +30,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+export const firebaseClient = initializeApp(firebaseConfig);
+export const db = getFirestore(firebaseClient);
+export const auth = getAuth(firebaseClient);
+const analytics = getAnalytics(firebaseClient);

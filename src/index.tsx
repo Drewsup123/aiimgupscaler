@@ -5,6 +5,7 @@ import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import deepai from "deepai";
+import GlobalStateProvider from "./contexts/globalStateProvider";
 deepai.setApiKey(process.env.REACT_APP_DEEP_API_KEY || "");
 
 const root = ReactDOM.createRoot(
@@ -12,9 +13,11 @@ const root = ReactDOM.createRoot(
 );
 root.render(
     <React.StrictMode>
-        <Router>
-            <App />
-        </Router>
+        <GlobalStateProvider>
+            <Router>
+                <App />
+            </Router>
+        </GlobalStateProvider>
     </React.StrictMode>
 );
 
