@@ -45,7 +45,7 @@ const HomePage = () => {
     };
 
     return (
-        <div className="route">
+        <div className={`route ${styles.homeWrapper}`}>
             <div className={styles.headerSection}>
                 <h1>AI-Powered Image Upscaler</h1>
                 <sub>
