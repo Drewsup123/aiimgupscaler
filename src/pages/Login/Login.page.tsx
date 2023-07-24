@@ -26,7 +26,6 @@ const LoginPage = () => {
                         uid: user.uid,
                         displayName: user.displayName,
                         email: user.email,
-                        // test: "test1",
                     },
                     { merge: true }
                 );

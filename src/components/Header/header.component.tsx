@@ -1,7 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import styles from "./header.module.sass";
+import useAuth from "../../hooks/useAuth";
 
 const Header = () => {
+    const { authState } = useAuth();
+
     return (
         <header className={styles.header}>
             <Link to="/" className={styles.siteName}>
@@ -11,9 +14,15 @@ const Header = () => {
                 <NavLink to="/samples">Samples</NavLink>
                 <NavLink to="/why">Why Choose Us</NavLink>
                 <NavLink to="/pricing">Pricing</NavLink>
-                <Link to="/login">
-                    <button id="loginBtn">Login</button>
-                </Link>
+                {authState.authenticated ? (
+                    <Link to="/account">
+                        <button id="accountBtn">My Account</button>
+                    </Link>
+                ) : (
+                    <Link to="/login">
+                        <button id="loginBtn">Login</button>
+                    </Link>
+                )}
             </div>
         </header>
     );

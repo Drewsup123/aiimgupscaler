@@ -8,6 +8,7 @@ import TermsAndConditionsPage from "./pages/TermsAndConditions.page";
 import AccountPage from "./pages/Account.page";
 import SamplePage from "./pages/Sample/Sample.page";
 import LoginPage from "./pages/Login/Login.page";
+import LoggedInRoute from "./components/Routing/LoggedInRoute.component";
 
 function App() {
     return (
