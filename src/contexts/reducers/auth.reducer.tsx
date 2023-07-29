@@ -25,13 +25,8 @@ export const authReducer = (
                 ...action.payload,
                 authenticated: true,
             };
-            localStorage.setItem("auth", JSON.stringify(loggedInState));
             return loggedInState;
         case UPDATE_AUTH:
-            localStorage.setItem(
-                "auth",
-                JSON.stringify({ ...state, ...action.payload })
-            );
             return {
                 ...state,
                 ...action.payload,

@@ -15,7 +15,7 @@ export interface IAuth {
 
 const AuthContext = React.createContext<IAuthContext>({
     authState: {
-        authenticated: true,
+        authenticated: false,
         user: {},
         token: null,
     },
