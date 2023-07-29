@@ -5,7 +5,7 @@ const PREMIUM_ID = "price_1NZ0sUFLfOdR6n29ElFnIWea";
 
 export const createCheckoutSession = async (uid: string) => {
     const checkout_ref = doc(db, "checkout_sessions", uid);
-    const user_ref = doc(db, "users", uid);
+    const user_ref = doc(db, "users", uid, "checkout_sessions");
     const checkoutInfo = {
         checkout_sessions: {
             price: PREMIUM_ID,
