@@ -4,6 +4,8 @@ import styles from "./Home.module.sass";
 import { generateId } from "../../utils/uuid.util";
 import Upscaler from "upscaler";
 import ImageCard from "../../components/Home/ImageCard.component";
+import useAuth from "../../hooks/useAuth";
+import { createCheckoutSession } from "../../stripe/createCheckoutSession";
 
 export interface IFile {
     file: File;
@@ -13,6 +15,7 @@ export interface IFile {
 const HomePage = () => {
     const [files, setFiles] = useState<IFile[]>([]);
     const [rescaleKey, setRescaleKey] = useState<number>(0);
+    const { authState } = useAuth();
     const filesRef = useRef<IFile[]>([]);
     if (files) {
         filesRef.current = files;
@@ -44,6 +47,11 @@ const HomePage = () => {
         setRescaleKey(rescaleKey + 1);
     };
 
+    const upgradeToPremium = () => {
+        if (!authState.user?.uid) return;
+        createCheckoutSession(authState.user?.uid);
+    };
+
     return (
         <div className={`route ${styles.homeWrapper}`}>
             <div className={styles.headerSection}>
@@ -54,6 +62,7 @@ const HomePage = () => {
                     processing capabilities. Upscaling multiple images is fast
                     and easy!
                 </sub>
+                <button onClick={upgradeToPremium}>Upgrade to Premium!</button>
             </div>
             <StyledDropzone onDrop={handleDrop} />
             <div className={styles.allPreviewActions}>
