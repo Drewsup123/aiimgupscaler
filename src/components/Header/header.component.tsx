@@ -14,6 +14,7 @@ const Header = () => {
                 <NavLink to="/samples">Samples</NavLink>
                 <NavLink to="/why">Why Choose Us</NavLink>
                 <NavLink to="/pricing">Pricing</NavLink>
+                {authState.authenticated ? "true" : "false"}
                 {authState.authenticated ? (
                     <Link to="/account">
                         <button id="accountBtn">My Account</button>

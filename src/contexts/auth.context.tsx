@@ -1,5 +1,9 @@
 import React, { Reducer, useEffect, useReducer } from "react";
-import { CLEAR_AUTH } from "./reducers/auth.reducer";
+import {
+    CLEAR_AUTH,
+    UPDATE_AUTH,
+    initialAuthState,
+} from "./reducers/auth.reducer";
 
 export interface IAuthContext {
     authState: IAuth;
@@ -9,16 +13,12 @@ export interface IAuthContext {
 
 export interface IAuth {
     authenticated: boolean;
-    user: any;
-    token: string | null;
+    user?: any;
+    token?: string | null;
 }
 
 const AuthContext = React.createContext<IAuthContext>({
-    authState: {
-        authenticated: false,
-        user: {},
-        token: null,
-    },
+    authState: initialAuthState,
     updateAuthState: () => {},
     clearAuthState: () => {},
 });
@@ -34,14 +34,9 @@ export const AuthProvider = ({ children, reducer, initialState }: any) => {
     };
 
     const clearAuthState = () => {
+        alert("Clearing auth State");
         return authDispatch({ type: CLEAR_AUTH });
     };
-
-    useEffect(() => {
-        if (localStorage.authState?.authenticated) {
-            return localStorage.clear();
-        }
-    }, []);
 
     return (
         <AuthContext.Provider

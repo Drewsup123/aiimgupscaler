@@ -5,14 +5,15 @@ const PREMIUM_ID = "price_1NZ0sUFLfOdR6n29ElFnIWea";
 
 export const createCheckoutSession = async (uid: string) => {
     const checkout_ref = doc(db, "checkout_sessions", uid);
-    setDoc(checkout_ref, {
+    const user_ref = doc(db, "users", uid);
+    const checkoutInfo = {
         price: PREMIUM_ID,
         success_url: window.location.origin,
         cancel_url: window.location.origin,
-    });
-    // await setDoc(doc(db, "users", uid), {
+    };
+    setDoc(checkout_ref, checkoutInfo, { merge: true });
+    setDoc(user_ref, checkoutInfo, { merge: true });
 
-    // })
     onSnapshot(checkout_ref, async (doc: any) => {
         const data = doc.data();
         console.log("Current Doc : ", data);

@@ -31,6 +31,7 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const firebaseClient = initializeApp(firebaseConfig);
+firebaseClient.automaticDataCollectionEnabled = true;
 export const db = getFirestore(firebaseClient);
 export const auth = getAuth(firebaseClient);
 const analytics = getAnalytics(firebaseClient);

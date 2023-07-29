@@ -56,6 +56,7 @@
     ]
   },
   "devDependencies": {
+    "@firebase/firestore-types": "^3.0.0",
     "@types/deepai": "^1.0.0"
   }
 }

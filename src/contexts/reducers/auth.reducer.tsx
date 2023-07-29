@@ -1,13 +1,24 @@
+import { auth } from "../../firebase/client";
 import { IAuth } from "../auth.context";
 
 export const UPDATE_AUTH = "UPDATE_AUTH";
 export const CLEAR_AUTH = "CLEAR_AUTH";
 export const LOGIN = "LOGIN";
 
-let localStorageAuth = localStorage.getItem("auth");
-export const initialAuthState: IAuth = localStorageAuth
-    ? JSON.parse(localStorageAuth)
+export const initialAuthState: IAuth = auth.currentUser?.uid
+    ? {
+          user: auth.currentUser,
+          token: null,
+          authenticated: true,
+      }
     : { authenticated: false };
+
+console.log(
+    "Initial Auth State : ",
+    initialAuthState,
+    auth.currentUser?.uid,
+    auth.currentUser
+);
 
 interface IAction {
     type: string;
