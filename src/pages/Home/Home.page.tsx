@@ -6,6 +6,8 @@ import Upscaler from "upscaler";
 import ImageCard from "../../components/Home/ImageCard.component";
 import useAuth from "../../hooks/useAuth";
 import { createCheckoutSession } from "../../stripe/createCheckoutSession";
+import Samples from "../../components/Samples.component";
+import usePremiumStatus from "../../hooks/usePremiumStatus";
 
 export interface IFile {
     file: File;
@@ -16,6 +18,7 @@ const HomePage = () => {
     const [files, setFiles] = useState<IFile[]>([]);
     const [rescaleKey, setRescaleKey] = useState<number>(0);
     const { authState } = useAuth();
+    const premiumStatus = usePremiumStatus();
     const filesRef = useRef<IFile[]>([]);
     if (files) {
         filesRef.current = files;
@@ -62,9 +65,14 @@ const HomePage = () => {
                     processing capabilities. Upscaling multiple images is fast
                     and easy!
                 </sub>
-                <button className="premiumButton" onClick={upgradeToPremium}>
-                    Upgrade to get unlimited access!
-                </button>
+                {premiumStatus ? null : (
+                    <button
+                        className="premiumButton"
+                        onClick={upgradeToPremium}
+                    >
+                        Upgrade to get unlimited access!
+                    </button>
+                )}
             </div>
             <StyledDropzone onDrop={handleDrop} />
             <div className={styles.allPreviewActions}>
@@ -94,6 +102,14 @@ const HomePage = () => {
                         here.
                     </span>
                 )}
+            </div>
+            <div className={styles.samplesSection}>
+                <h2>Extremely fast and powerful</h2>
+                <h6>
+                    Move the slider left and right to view how the images have
+                    transformed into something beautiful.
+                </h6>
+                <Samples />
             </div>
         </div>
     );

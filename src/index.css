@@ -150,7 +150,7 @@ body * {
 }
 
 .route {
-    margin-top: 60px;
+    margin-top: 80px;
     padding: 20px 5%;
     z-index: 5 !important;
     max-height: calc(100vh - 80px);
@@ -265,26 +265,26 @@ body * {
 @-webkit-keyframes square {
     0% {
         transform: translateY(0);
-        opacity: 100%;
+        opacity: 50%;
     }
     90% {
-        opacity: 100%;
+        opacity: 50%;
     }
     100% {
-        transform: translateY(-700px) rotate(600deg);
+        transform: translateY(-500px) rotate(600deg);
         opacity: 0%;
     }
 }
 @keyframes square {
     0% {
         transform: translateY(0);
-        opacity: 100%;
+        opacity: 50%;
     }
     90% {
-        opacity: 100%;
+        opacity: 50%;
     }
     100% {
-        transform: translateY(-700px) rotate(600deg);
+        transform: translateY(-500px) rotate(600deg);
         opacity: 0%;
     }
 }

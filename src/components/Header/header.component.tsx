@@ -80,9 +80,9 @@ const Header = () => {
                 AI Image Upscaler
             </Link>
             <div className={styles.rightLinks}>
-                <NavLink to="/samples">Samples</NavLink>
+                {/* <NavLink to="/samples">Samples</NavLink>
                 <NavLink to="/why">Why Choose Us</NavLink>
-                <NavLink to="/pricing">Pricing</NavLink>
+                <NavLink to="/pricing">Pricing</NavLink> */}
                 {premiumStatus ? "PREMIUM" : "Broke bitch"}
                 {authState.authenticated ? (
                     <Link to="/account">
