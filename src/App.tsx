@@ -28,7 +28,7 @@ function App() {
             </ul>
             <Routes>
                 <Route path="/" Component={HomePage} />
-                <Route path="/login" Component={LoginPage} />
+                {/* <Route path="/login" Component={LoginPage} /> */}
                 <Route path="/why" Component={WhyPage} />
                 <Route path="/pricing" Component={PricingPage} />
                 <Route path="/samples" Component={SamplePage} />
