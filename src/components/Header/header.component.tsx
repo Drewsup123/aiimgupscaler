@@ -9,10 +9,12 @@ import {
     browserLocalPersistence,
 } from "firebase/auth";
 import { UPDATE_AUTH } from "../../contexts/reducers/auth.reducer";
+import usePremiumStatus from "../../hooks/usePremiumStatus";
 const provider = new GoogleAuthProvider();
 
 const Header = () => {
     const { authState, updateAuthState } = useAuth();
+    const premiumStatus = usePremiumStatus();
 
     const signInWithGoogle = async () => {
         return await auth
@@ -81,6 +83,7 @@ const Header = () => {
                 <NavLink to="/samples">Samples</NavLink>
                 <NavLink to="/why">Why Choose Us</NavLink>
                 <NavLink to="/pricing">Pricing</NavLink>
+                {premiumStatus ? "PREMIUM" : "Broke bitch"}
                 {authState.authenticated ? (
                     <Link to="/account">
                         <button id="accountBtn">My Account</button>

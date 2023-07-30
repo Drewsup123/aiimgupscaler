@@ -62,7 +62,9 @@ const HomePage = () => {
                     processing capabilities. Upscaling multiple images is fast
                     and easy!
                 </sub>
-                <button onClick={upgradeToPremium}>Upgrade to Premium!</button>
+                <button className="premiumButton" onClick={upgradeToPremium}>
+                    Upgrade to get unlimited access!
+                </button>
             </div>
             <StyledDropzone onDrop={handleDrop} />
             <div className={styles.allPreviewActions}>

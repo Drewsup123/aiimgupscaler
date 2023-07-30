@@ -81,7 +81,7 @@ const StyledDropzone: React.FC<IProps> = (props: IProps) => {
             <p
                 style={{
                     fontSize: 24,
-                    color: "#fff",
+                    color: "#111827",
                 }}
             >
                 Drag 'n' drop some files here, or click to select files
