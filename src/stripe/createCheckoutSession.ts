@@ -1,11 +1,17 @@
-import { doc, onSnapshot, setDoc } from "firebase/firestore";
+import {
+    doc,
+    onSnapshot,
+    setDoc,
+    collection,
+    addDoc,
+} from "firebase/firestore";
 import { db } from "../firebase/client";
 import getStripe from "./initStripe";
 const PREMIUM_ID = "price_1NZ0sUFLfOdR6n29ElFnIWea";
 
 export const createCheckoutSession = async (uid: string) => {
-    const checkout_ref = doc(db, "checkout_sessions", uid);
-    const user_ref = doc(db, "users", uid, "checkout_sessions");
+    // const checkout_ref = doc(db, "checkout_sessions", uid);
+    const user_ref = doc(db, "users", uid);
     const checkoutInfo = {
         checkout_sessions: {
             price: PREMIUM_ID,
@@ -13,9 +19,9 @@ export const createCheckoutSession = async (uid: string) => {
             cancel_url: window.location.origin,
         },
     };
-    setDoc(checkout_ref, checkoutInfo, { merge: true });
-    setDoc(user_ref, checkoutInfo, { merge: true });
-    onSnapshot(checkout_ref, async (doc: any) => {
+    // setDoc(checkout_ref, checkoutInfo, { merge: true });
+    await setDoc(user_ref, checkoutInfo, { merge: true });
+    onSnapshot(user_ref, async (doc: any) => {
         const data = doc.data();
         console.log("Current Doc : ", data);
         if (data?.sessionId) {
