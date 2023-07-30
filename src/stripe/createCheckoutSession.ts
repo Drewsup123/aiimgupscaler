@@ -21,13 +21,13 @@ export const createCheckoutSession = async (uid: string) => {
     };
     try {
         const docRef = await addDoc(checkout_sessions_ref, checkoutInfo);
-        onSnapshot(docRef, async (doc: any) => {
+        onSnapshot(user_ref, async (doc: any) => {
             const data = doc.data();
             console.log("Current Doc : ", data);
-            if (data?.sessionId) {
+            if (data?.stripeId) {
                 console.log("Found Session ID");
                 const stripe = await getStripe();
-                stripe?.redirectToCheckout({ sessionId: data.sessionId });
+                stripe?.redirectToCheckout({ sessionId: data.stripeId });
             }
         });
     } catch (error) {
