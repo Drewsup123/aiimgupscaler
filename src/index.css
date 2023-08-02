@@ -326,3 +326,27 @@ body * {
         min-width: 196px;
     }
 }
+
+/* For Chrome and Opera */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(144deg, #00ddeb, #5b42f3 50%, #af40ff);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(144deg, #00ddeb, #5b42f3 50%, #af40ff);
+}
+
+/* For Firefox (limited support) */
+* {
+    scrollbar-color: rebeccapurple green;
+    scrollbar-width: thin;
+}
