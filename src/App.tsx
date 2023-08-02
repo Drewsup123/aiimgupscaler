@@ -14,7 +14,7 @@ function App() {
     return (
         <div className="App">
             <Header />
-            <ul className="bg-bubbles">
+            {/* <ul className="bg-bubbles">
                 <li></li>
                 <li></li>
                 <li></li>
@@ -25,7 +25,7 @@ function App() {
                 <li></li>
                 <li></li>
                 <li></li>
-            </ul>
+            </ul> */}
             <Routes>
                 <Route path="/" Component={HomePage} />
                 {/* <Route path="/login" Component={LoginPage} /> */}

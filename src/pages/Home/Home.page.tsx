@@ -74,7 +74,9 @@ const HomePage = () => {
                     </button>
                 )}
             </div>
-            <StyledDropzone onDrop={handleDrop} />
+            <div className={styles.dropzoneWrapper}>
+                <StyledDropzone onDrop={handleDrop} />
+            </div>
             <div className={styles.allPreviewActions}>
                 <button
                     className={styles.removeBtn}
