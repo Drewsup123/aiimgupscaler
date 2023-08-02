@@ -8,6 +8,7 @@ import useAuth from "../../hooks/useAuth";
 import { createCheckoutSession } from "../../stripe/createCheckoutSession";
 import Samples from "../../components/Samples.component";
 import usePremiumStatus from "../../hooks/usePremiumStatus";
+import WhyCard from "../../components/Home/WhyCard.component";
 
 export interface IFile {
     file: File;
@@ -112,6 +113,17 @@ const HomePage = () => {
                     transformed into something beautiful.
                 </h6>
                 <Samples />
+            </div>
+            <div className={styles.whyUsSection}>
+                <h2>Why Choose AI Img Tools</h2>
+                <ul className={styles.cards}>
+                    <WhyCard title="Fast" description="Fast Description" />
+                    <WhyCard title="Easy" description="Title Description" />
+                    <WhyCard
+                        title="Affordable"
+                        description="Title Description"
+                    />
+                </ul>
             </div>
         </div>
     );

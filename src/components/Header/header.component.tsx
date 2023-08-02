@@ -78,7 +78,7 @@ const Header = () => {
     return (
         <header className={styles.header}>
             <Link to="/" className={styles.siteName}>
-                AI Image Upscaler
+                AI Img Tools
             </Link>
             <div className={styles.rightLinks}>
                 {authState.authenticated ? (
