@@ -2,8 +2,8 @@ import styles from "../../pages/Home/Home.module.sass";
 interface IProps {
     imgSrc?: string;
     title?: string;
+    hoverTitle?: string;
     description?: string;
-    styleNumber?: number;
 }
 
 const WhyCard = (props: IProps) => {
@@ -17,7 +17,7 @@ const WhyCard = (props: IProps) => {
             </div>
             <div className={styles.card__overlay}></div>
             <div className={styles.card__content}>
-                <h2>{props.title}</h2>
+                <h2>{props.hoverTitle}</h2>
                 <p>{props.description}</p>
             </div>
         </li>

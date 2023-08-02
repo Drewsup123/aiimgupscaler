@@ -117,15 +117,21 @@ const HomePage = () => {
             <div className={styles.whyUsSection}>
                 <h2>Why Choose AI Img Tools</h2>
                 <ul className={styles.cards}>
-                    <WhyCard title="Fast" description="Fast Description" />
+                    <WhyCard
+                        title="Fast"
+                        description="Experience the power of the latest AI and Upscaling technology, 
+                        making the upscaling process lightning fast. In just a matter of seconds, witness remarkable transformations."
+                        hoverTitle="Lightning Fast Upscaling"
+                    />
                     <WhyCard
                         title="Easy"
-                        description="Title Description"
-                        styleNumber={2}
+                        hoverTitle="Effortless"
+                        description=" Embrace the Smoothest Upscaling Experience. Upload one or multiple images, click Start, and behold your upscaled images in mere seconds."
                     />
                     <WhyCard
                         title="Affordable"
-                        description="Title Description"
+                        hoverTitle="Budget Friendly"
+                        description="Enjoy Our Cost-Effective Solution with a Single Plan granting you limitless access to all our exceptional services!"
                     />
                 </ul>
             </div>
