@@ -118,7 +118,11 @@ const HomePage = () => {
                 <h2>Why Choose AI Img Tools</h2>
                 <ul className={styles.cards}>
                     <WhyCard title="Fast" description="Fast Description" />
-                    <WhyCard title="Easy" description="Title Description" />
+                    <WhyCard
+                        title="Easy"
+                        description="Title Description"
+                        styleNumber={2}
+                    />
                     <WhyCard
                         title="Affordable"
                         description="Title Description"
