@@ -20,6 +20,12 @@ const AccountPage = () => {
                 <h6>
                     Account Created : {authState.user?.metadata?.creationTime}
                 </h6>
+                <button
+                    className={styles.logoutBtn}
+                    onClick={goToCustomerPortal}
+                >
+                    Logout
+                </button>
             </div>
             <div className={`${styles.section} ${styles.leftSection}`}>
                 <h4>Subscription Details</h4>
