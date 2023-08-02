@@ -15,6 +15,7 @@ import "firebase/auth";
 import "firebase/firestore";
 import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
+import { getFunctions, httpsCallable } from "firebase/functions";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
@@ -34,4 +35,9 @@ export const firebaseClient = initializeApp(firebaseConfig);
 firebaseClient.automaticDataCollectionEnabled = true;
 export const db = getFirestore(firebaseClient);
 export const auth = getAuth(firebaseClient);
+export const functions = getFunctions(firebaseClient);
+export const createPortalLink = httpsCallable(
+    functions,
+    "ext-firestore-stripe-payments-createPortalLink"
+);
 const analytics = getAnalytics(firebaseClient);

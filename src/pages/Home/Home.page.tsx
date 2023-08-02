@@ -104,7 +104,7 @@ const HomePage = () => {
                 )}
             </div>
             <div className={styles.samplesSection}>
-                <h2>Extremely fast and powerful</h2>
+                <h2>Extremely fast, simple, and powerful</h2>
                 <h6>
                     Move the slider left and right to view how the images have
                     transformed into something beautiful.

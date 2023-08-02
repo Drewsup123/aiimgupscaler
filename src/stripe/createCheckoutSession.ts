@@ -1,10 +1,4 @@
-import {
-    doc,
-    onSnapshot,
-    setDoc,
-    collection,
-    addDoc,
-} from "firebase/firestore";
+import { doc, onSnapshot, collection, addDoc } from "firebase/firestore";
 import { db } from "../firebase/client";
 import getStripe from "./initStripe";
 const PREMIUM_ID = "price_1NZ0sUFLfOdR6n29ElFnIWea";

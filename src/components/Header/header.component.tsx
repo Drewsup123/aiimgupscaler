@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import { UPDATE_AUTH } from "../../contexts/reducers/auth.reducer";
 import usePremiumStatus from "../../hooks/usePremiumStatus";
+import { MdAccountCircle } from "react-icons/md";
 const provider = new GoogleAuthProvider();
 
 const Header = () => {
@@ -80,13 +81,9 @@ const Header = () => {
                 AI Image Upscaler
             </Link>
             <div className={styles.rightLinks}>
-                {/* <NavLink to="/samples">Samples</NavLink>
-                <NavLink to="/why">Why Choose Us</NavLink>
-                <NavLink to="/pricing">Pricing</NavLink> */}
-                {premiumStatus ? "PREMIUM" : "Broke bitch"}
                 {authState.authenticated ? (
                     <Link to="/account">
-                        <button id="accountBtn">My Account</button>
+                        <MdAccountCircle size={40} />
                     </Link>
                 ) : (
                     <button id="loginBtn" onClick={signInWithGoogle}>
