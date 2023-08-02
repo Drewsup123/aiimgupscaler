@@ -13,7 +13,7 @@ const AccountPage = () => {
 
     return (
         <div className={`route ${styles.wrapper}`}>
-            <div className={`${styles.section} ${styles.rightSection}`}>
+            <div className={`${styles.section} ${styles.leftSection}`}>
                 <h4>Basic Information</h4>
                 <h6>Name: {authState.user?.displayName}</h6>
                 <h6>Email : {authState.user?.email}</h6>
@@ -27,7 +27,7 @@ const AccountPage = () => {
                     Logout
                 </button>
             </div>
-            <div className={`${styles.section} ${styles.leftSection}`}>
+            <div className={`${styles.section} ${styles.rightSection}`}>
                 <h4>Subscription Details</h4>
                 <h6>Plan: {premiumStatus ? "Premium" : "Free"}</h6>
                 <h6>
