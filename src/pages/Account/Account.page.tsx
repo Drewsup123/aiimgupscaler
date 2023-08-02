@@ -32,7 +32,7 @@ const AccountPage = () => {
                     className={styles.cancelSubscriptionBtn}
                     onClick={goToCustomerPortal}
                 >
-                    Cancel Subscription
+                    Customer Portal
                 </button>
             </div>
         </div>
