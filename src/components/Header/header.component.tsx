@@ -81,6 +81,12 @@ const Header = () => {
                 AI Img Tools
             </Link>
             <div className={styles.rightLinks}>
+                <NavLink to="/" className={styles.navLink}>
+                    Upscale
+                </NavLink>
+                <NavLink to="/bg-removal" className={styles.navLink}>
+                    Remove Background
+                </NavLink>
                 {authState.authenticated ? (
                     <Link to="/account">
                         <MdAccountCircle size={40} />

@@ -352,3 +352,7 @@ body * {
     scrollbar-color: rebeccapurple green;
     scrollbar-width: thin;
 }
+
+a.active {
+    text-decoration: underline !important;
+}
