@@ -8,6 +8,7 @@ import {
 interface IProps {
     onDrop?: Function;
     disabled?: boolean;
+    customText?: string;
 }
 
 const baseStyle: React.CSSProperties = {
@@ -85,7 +86,9 @@ const StyledDropzone: React.FC<IProps> = (props: IProps) => {
                     color: "#111827",
                 }}
             >
-                Drag 'n' drop some files here, or click to select files
+                {props.customText
+                    ? props.customText
+                    : "Drag 'n' drop some files here, or click to select files"}
             </p>
         </div>
     );

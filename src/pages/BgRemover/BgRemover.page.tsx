@@ -94,8 +94,17 @@ const BgRemoverPage = () => {
                     ))
                 ) : (
                     <span className={styles.noFilesText}>
-                        Start selecting images - they will automatically appear
-                        here.
+                        {premiumStatus
+                            ? "Start selecting images - they will automatically appear here."
+                            : "Upgrade to Premium to get access to this feature."}
+                        {premiumStatus ? null : (
+                            <button
+                                className="premiumButton"
+                                onClick={upgradeToPremium}
+                            >
+                                Upgrade to get unlimited access!
+                            </button>
+                        )}
                     </span>
                 )}
             </div>
