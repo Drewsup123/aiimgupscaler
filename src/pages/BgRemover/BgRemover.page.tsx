@@ -102,7 +102,7 @@ const BgRemoverPage = () => {
                                 className="premiumButton"
                                 onClick={upgradeToPremium}
                             >
-                                Upgrade to get unlimited access!
+                                Upgrade to get access to this feature
                             </button>
                         )}
                     </span>
