@@ -84,7 +84,7 @@ const BgRemoverPage = () => {
             </div>
             <div className={styles.filesPreview}>
                 {files.length ? (
-                    files.map((file, index) => (
+                    files.map((file) => (
                         <ImageCard
                             key={file.id}
                             file={file}
