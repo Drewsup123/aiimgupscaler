@@ -64,16 +64,21 @@ const BgRemoverPage = () => {
                 )}
             </div>
             <div className={styles.dropzoneWrapper}>
-                <StyledDropzone onDrop={handleDrop} />
+                <StyledDropzone onDrop={handleDrop} disabled={!premiumStatus} />
             </div>
             <div className={styles.allPreviewActions}>
                 <button
                     className={styles.removeBtn}
                     onClick={() => handleRemoveAll()}
+                    disabled={!premiumStatus}
                 >
                     Remove All
                 </button>
-                <button className={styles.startBtn} onClick={startUpscaleAll}>
+                <button
+                    className={styles.startBtn}
+                    onClick={startUpscaleAll}
+                    disabled={!premiumStatus}
+                >
                     Start All
                 </button>
             </div>

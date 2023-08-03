@@ -7,6 +7,7 @@ import {
 
 interface IProps {
     onDrop?: Function;
+    disabled?: boolean;
 }
 
 const baseStyle: React.CSSProperties = {
@@ -77,7 +78,7 @@ const StyledDropzone: React.FC<IProps> = (props: IProps) => {
 
     return (
         <div {...rootProps}>
-            <input {...inputProps} />
+            <input {...inputProps} disabled={props.disabled} />
             <p
                 style={{
                     fontSize: 24,
