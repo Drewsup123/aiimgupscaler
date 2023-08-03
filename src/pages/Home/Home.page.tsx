@@ -2,7 +2,6 @@ import { useCallback, useRef, useState } from "react";
 import StyledDropzone from "../../components/Dropzone/StyledDropzone.component";
 import styles from "./Home.module.sass";
 import { generateId } from "../../utils/uuid.util";
-import Upscaler from "upscaler";
 import ImageCard from "../../components/Home/ImageCard.component";
 import useAuth from "../../hooks/useAuth";
 import { createCheckoutSession } from "../../stripe/createCheckoutSession";
