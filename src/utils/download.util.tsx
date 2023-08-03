@@ -5,7 +5,7 @@ export const openImage = (imageUrl: string, imageName: string) => {
     link.href = imageUrl;
     link.target = "_blank";
     // Set the download attribute to the desired file name
-    link.download = imageName;
+    // link.download = imageName;
     // Append the link to the body
     document.body.appendChild(link);
     // Trigger a click event on the link
