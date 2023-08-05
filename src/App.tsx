@@ -4,6 +4,7 @@ import HomePage from "./pages/Home/Home.page";
 import TermsAndConditionsPage from "./pages/TermsAndConditions.page";
 import AccountPage from "./pages/Account/Account.page";
 import BgRemoverPage from "./pages/BgRemover/BgRemover.page";
+import InPaintingPage from "./pages/Inpainting/inpainting.page";
 
 function App() {
     return (
@@ -28,6 +29,7 @@ function App() {
                     Component={TermsAndConditionsPage}
                 />
                 <Route path="/bg-removal" Component={BgRemoverPage} />
+                <Route path="/inpainting" Component={InPaintingPage} />
                 <Route path="/account" Component={AccountPage} />
             </Routes>
         </div>
