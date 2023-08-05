@@ -64,31 +64,6 @@ const ImageDrawer: React.FC = () => {
         }
     };
 
-    const fillBackgroundBlack = () => {
-        if (imageRef.current && drawingCanvasRef.current) {
-            drawingCanvasRef.current.width = imageRef.current.width;
-            drawingCanvasRef.current.height = imageRef.current.height;
-            const ctx = drawingCanvasRef.current.getContext("2d");
-            if (ctx) {
-                ctx.fillStyle = "black";
-                ctx.fillRect(
-                    0,
-                    0,
-                    drawingCanvasRef.current.width,
-                    drawingCanvasRef.current.height
-                );
-            }
-        }
-    };
-
-    // const handleSaveMask = () => {
-    //     fillBackgroundBlack();
-    //     const link = document.createElement("a");
-    //     link.href = drawingCanvasRef.current?.toDataURL("image/png") || "";
-    //     link.download = "mask.png";
-    //     link.click();
-    // };
-
     const handleSaveMask = () => {
         if (drawingCanvasRef.current) {
             // Create a temporary canvas with the same dimensions
