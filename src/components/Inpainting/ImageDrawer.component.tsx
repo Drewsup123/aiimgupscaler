@@ -3,10 +3,10 @@ import React, { useRef, useState } from "react";
 const ImageDrawer: React.FC = () => {
     const [isDrawing, setIsDrawing] = useState<boolean>(false);
     const [imageURL, setImageURL] = useState<string | null>(null);
+    const [brushSize, setBrushSize] = useState<number>(15);
     const drawingCanvasRef = useRef<HTMLCanvasElement>(null);
     const previewCanvasRef = useRef<HTMLCanvasElement>(null);
     const imageRef = useRef<HTMLImageElement>(null);
-    const brushSize = 5; // You can change this value or make it adjustable by the user
 
     const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
@@ -54,7 +54,7 @@ const ImageDrawer: React.FC = () => {
             if (isDrawing) {
                 drawingCtx.lineWidth = brushSize;
                 drawingCtx.lineCap = "round";
-                drawingCtx.strokeStyle = "black"; // Color for the mask
+                drawingCtx.strokeStyle = "#fff"; // Color for the mask
 
                 drawingCtx.lineTo(offsetX, offsetY);
                 drawingCtx.stroke();
@@ -64,11 +64,51 @@ const ImageDrawer: React.FC = () => {
         }
     };
 
+    const fillBackgroundBlack = () => {
+        if (imageRef.current && drawingCanvasRef.current) {
+            drawingCanvasRef.current.width = imageRef.current.width;
+            drawingCanvasRef.current.height = imageRef.current.height;
+            const ctx = drawingCanvasRef.current.getContext("2d");
+            if (ctx) {
+                ctx.fillStyle = "black";
+                ctx.fillRect(
+                    0,
+                    0,
+                    drawingCanvasRef.current.width,
+                    drawingCanvasRef.current.height
+                );
+            }
+        }
+    };
+
+    // const handleSaveMask = () => {
+    //     fillBackgroundBlack();
+    //     const link = document.createElement("a");
+    //     link.href = drawingCanvasRef.current?.toDataURL("image/png") || "";
+    //     link.download = "mask.png";
+    //     link.click();
+    // };
+
     const handleSaveMask = () => {
-        const link = document.createElement("a");
-        link.href = drawingCanvasRef.current?.toDataURL("image/png") || "";
-        link.download = "mask.png";
-        link.click();
+        if (drawingCanvasRef.current) {
+            // Create a temporary canvas with the same dimensions
+            const tempCanvas = document.createElement("canvas");
+            tempCanvas.width = drawingCanvasRef.current.width;
+            tempCanvas.height = drawingCanvasRef.current.height;
+            const tempCtx = tempCanvas.getContext("2d");
+            if (tempCtx) {
+                // Fill the temporary canvas with black
+                tempCtx.fillStyle = "black";
+                tempCtx.fillRect(0, 0, tempCanvas.width, tempCanvas.height);
+                // Draw the content of the drawing canvas onto the temporary canvas
+                tempCtx.drawImage(drawingCanvasRef.current, 0, 0);
+            }
+            // Save the temporary canvas as an image
+            const link = document.createElement("a");
+            link.href = tempCanvas.toDataURL("image/png");
+            link.download = "mask.png";
+            link.click();
+        }
     };
 
     return (
