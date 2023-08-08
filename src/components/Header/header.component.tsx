@@ -87,6 +87,9 @@ const Header = () => {
                 <NavLink to="/bg-removal" className={styles.navLink}>
                     Remove Background
                 </NavLink>
+                <a href="/editor.html" className={styles.navLink}>
+                    Photo Editor
+                </a>
                 {authState.authenticated ? (
                     <Link to="/account">
                         <MdAccountCircle size={40} />
