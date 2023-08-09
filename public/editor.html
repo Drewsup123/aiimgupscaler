@@ -119,8 +119,9 @@
                         data-target="#modal-save"
                         disabled
                     >
-                        <span class="material-icons">save</span
-                        ><span class="palleon-btn-text">Save or Download</span>
+                        <span class="material-icons">save</span>
+                        <!-- <span class="palleon-btn-text">Save or Download</span> -->
+                        <span class="palleon-btn-text">Download</span>
                     </button>
                 </div>
                 <!-- User Menu -->
@@ -25692,16 +25693,20 @@ Enter Your Text Here</textarea
                     <div class="palleon-tabs">
                         <!-- Menu -->
                         <ul class="palleon-tabs-menu">
-                            <li class="active" data-target="#modal-tab-save">
+                            <!-- ! Reenable when ready to save images -->
+                            <!-- <li class="active" data-target="#modal-tab-save">
                                 <span class="material-icons">save</span>Save
-                            </li>
-                            <li data-target="#modal-tab-download">
+                            </li> -->
+                            <li
+                                class="active"
+                                data-target="#modal-tab-download"
+                            >
                                 <span class="material-icons">download</span
                                 >Download
                             </li>
                         </ul>
                         <!-- Save File -->
-                        <div id="modal-tab-save" class="palleon-tab active">
+                        <!-- <div id="modal-tab-save" class="palleon-tab active">
                             <div id="palleon-save-as-img">
                                 <div class="palleon-block-50">
                                     <div>
@@ -25803,9 +25808,9 @@ Enter Your Text Here</textarea
                                     </button>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- Download File -->
-                        <div id="modal-tab-download" class="palleon-tab">
+                        <div id="modal-tab-download" class="palleon-tab active">
                             <div id="palleon-download-as-img">
                                 <div class="palleon-block-50">
                                     <div>
@@ -25885,7 +25890,7 @@ Enter Your Text Here</textarea
                                     </div>
                                 </div>
                             </div>
-                            <div id="palleon-download-as-json">
+                            <!-- <div id="palleon-download-as-json">
                                 <div class="palleon-block-50">
                                     <div>
                                         <label>File Name</label>
@@ -25908,7 +25913,7 @@ Enter Your Text Here</textarea
                                         >Download As Template
                                     </button>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
