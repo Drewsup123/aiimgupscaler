@@ -23363,6 +23363,18 @@ Enter Your Text Here</textarea
                     <div class="palleon-tabs">
                         <!-- Menu -->
                         <ul class="palleon-tabs-menu">
+                            <span
+                                style="
+                                    position: absolute;
+                                    top: -40px;
+                                    left: 0px;
+                                    color: red;
+                                    background-color: #212121;
+                                    padding: 5px 10px;
+                                "
+                                >Editor is still a work in progress. More
+                                features coming soon!</span
+                            >
                             <li class="active" data-target="#modal-select-img">
                                 <span class="material-icons">file_upload</span
                                 >New Image
@@ -23378,10 +23390,16 @@ Enter Your Text Here</textarea
                         </ul>
                         <!-- New Image -->
                         <div id="modal-select-img" class="palleon-tab active">
-                            <div class="palleon-select-btn-block">
+                            <div class="">
                                 <div>
-                                    <div class="palleon-btn-set">
-                                        <div class="palleon-file-field">
+                                    <div
+                                        class="palleon-btn-set"
+                                        style="min-width: 50%"
+                                    >
+                                        <div
+                                            class="palleon-file-field"
+                                            style="width: 100%"
+                                        >
                                             <input
                                                 type="file"
                                                 name="palleon-image-upload"
@@ -23426,7 +23444,7 @@ Enter Your Text Here</textarea
                                         </div>
                                     </div>
                                 </div>
-                                <div>
+                                <!-- <div>
                                     <div class="palleon-file-field">
                                         <input
                                             type="file"
@@ -23443,7 +23461,7 @@ Enter Your Text Here</textarea
                                             ><span>Upload Template</span></label
                                         >
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
                         </div>
                         <!-- Template Library -->
@@ -25830,7 +25848,7 @@ Enter Your Text Here</textarea
                                     >
                                         <span class="material-icons"
                                             >download</span
-                                        >Download As Image
+                                        >Download
                                     </button>
                                 </div>
                                 <div class="palleon-block-33">
