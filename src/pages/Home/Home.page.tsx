@@ -5,9 +5,17 @@ import { generateId } from "../../utils/uuid.util";
 import ImageCard from "../../components/Home/ImageCard.component";
 import useAuth from "../../hooks/useAuth";
 import { createCheckoutSession } from "../../stripe/createCheckoutSession";
-import Samples from "../../components/Samples.component";
+import Samples from "../../components/Home/Samples.component";
 import usePremiumStatus from "../../hooks/usePremiumStatus";
 import WhyCard from "../../components/Home/WhyCard.component";
+import ReactCompareImage from "react-compare-image";
+// Image Imports
+import DogBefore from "../../images/bg_dog_before.jpg";
+import DogAfter from "../../images/bg_dog_after.png";
+import ParrotBefore from "../../images/bg_parrot_before.jpg";
+import ParrotAfter from "../../images/bg_parrot_after.png";
+import TowerBefore from "../../images/bg_tower_before.jpg";
+import TowerAfter from "../../images/bg_tower_after.png";
 
 export interface IFile {
     file: File;
@@ -133,6 +141,39 @@ const HomePage = () => {
                         description="Enjoy Our Cost-Effective Solution with a Single Plan granting you limitless access to all our exceptional services!"
                     />
                 </ul>
+            </div>
+            <div className={styles.bgRemoverSection}>
+                <h2>Background Remover</h2>
+                <h6>
+                    Easily remove the background of any photo with a single
+                    click!
+                </h6>
+                <div className={styles.previewWrapper}>
+                    <div className={styles.compareImgWrapper}>
+                        <ReactCompareImage
+                            leftImage={TowerBefore}
+                            rightImage={TowerAfter}
+                            leftImageLabel="Before"
+                            rightImageLabel="After"
+                        />
+                    </div>
+                    <div className={styles.compareImgWrapper}>
+                        <ReactCompareImage
+                            leftImage={ParrotBefore}
+                            rightImage={ParrotAfter}
+                            leftImageLabel="Before"
+                            rightImageLabel="After"
+                        />
+                    </div>
+                    <div className={styles.compareImgWrapper}>
+                        <ReactCompareImage
+                            leftImage={DogBefore}
+                            rightImage={DogAfter}
+                            leftImageLabel="Before"
+                            rightImageLabel="After"
+                        />
+                    </div>
+                </div>
             </div>
         </div>
     );
