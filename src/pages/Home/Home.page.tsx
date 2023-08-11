@@ -175,6 +175,14 @@ const HomePage = () => {
                     </div>
                 </div>
             </div>
+            <div className={styles.editorSection}>
+                <h2>Fully Featured Photo Editor</h2>
+                <h6>
+                    Easily edit and make tweaks to your photos with a large
+                    amount of tools in our photo editor.
+                </h6>
+                <div className={styles.previewWrapper}></div>
+            </div>
         </div>
     );
 };
