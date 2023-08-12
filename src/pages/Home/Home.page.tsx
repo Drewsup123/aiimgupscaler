@@ -16,6 +16,8 @@ import ParrotBefore from "../../images/bg_parrot_before.jpg";
 import ParrotAfter from "../../images/bg_parrot_after.png";
 import TowerBefore from "../../images/bg_tower_before.jpg";
 import TowerAfter from "../../images/bg_tower_after.png";
+import EditorImage from "../../images/editor_1.jpg";
+import EditorTemplatesImage from "../../images/editor_templates_1.jpg";
 
 export interface IFile {
     file: File;
@@ -181,7 +183,108 @@ const HomePage = () => {
                     Easily edit and make tweaks to your photos with a large
                     amount of tools in our photo editor.
                 </h6>
-                <div className={styles.previewWrapper}></div>
+                <div className={styles.sectionWrapper}>
+                    <div className={styles.largerSection}>
+                        <img src={EditorImage} alt="Editor" />
+                    </div>
+                    <div className={styles.smallerSection}>
+                        <h2>Introducing AI IMG TOOLS Photo Editor</h2>
+                        <p>
+                            Your go-to online photo editor that's ingeniously
+                            designed to cater to both amateurs and
+                            professionals. Explore a world of creativity with a
+                            feature-rich interface that allows you to unleash
+                            the full potential of your images, all from the
+                            comfort of your web browser!
+                        </p>
+                        <br />
+                        <h2>Some of our Features:</h2>
+                        <ul>
+                            <li>
+                                <strong>Quick Adjustments:</strong> With a wide
+                                array of sliders and preset options, you can
+                                tweak exposure, contrast, color balance, and
+                                more, all at the click of a button. Your photo
+                                enhancements are now just seconds away!
+                            </li>
+                            <li>
+                                <strong>Shapes & Text:</strong> Want to add a
+                                personal touch? Insert various shapes and
+                                overlay text in numerous fonts, colors, and
+                                styles to make your images uniquely yours.
+                            </li>
+                            <li>
+                                <strong>QR Code Generation:</strong> Turn your
+                                images into QR codes effortlessly! Share links,
+                                contacts, or any data you want through your
+                                pictures.
+                            </li>
+                            <li>
+                                <strong>Background Removal:</strong> Clean up
+                                your images with our intelligent background
+                                removal tool. Whether it's for a
+                                professional-looking product shot or a perfect
+                                profile picture, we've got you covered.
+                            </li>
+                            <li>
+                                <strong>Icon Integration:</strong> Browse
+                                through our extensive library of icons or upload
+                                your own, and sprinkle them across your pictures
+                                for that extra flair.
+                            </li>
+                            <li>
+                                <strong>Add Other Images:</strong> Want to
+                                create a collage or simply blend images? Our
+                                editor enables you to insert multiple pictures,
+                                providing endless possibilities for creativity.
+                            </li>
+                            <li>
+                                <strong>Borders & Frames:</strong> Frame your
+                                photos with our wide selection of borders. From
+                                simple lines to intricate designs, you'll find
+                                the perfect border to complement your image.
+                            </li>
+                            <li>
+                                <strong>Overlay Images:</strong> Overlaying
+                                images has never been simpler! Blend, merge, and
+                                play with opacity to achieve the look you
+                                desire.
+                            </li>
+                        </ul>
+
+                        <p style={{ textAlign: "center", marginTop: 20 }}>
+                            AI IMG TOOLS editor is not just an editor; it's a
+                            creative workshop designed to meet your artistic
+                            needs without any steep learning curves. With an
+                            intuitive interface, and constant updates this your
+                            digital canvas to create, edit, and express. Whether
+                            you're a blogger, marketer, photographer, or just
+                            someone who loves playing with photos, our editor
+                            brings your vision to life.
+                        </p>
+                    </div>
+                </div>
+                <div className={styles.sectionWrapper}>
+                    <div className={styles.smallerSection}>
+                        <p>
+                            Our intuitive photo editor is equipped with an
+                            extensive collection of professionally designed
+                            templates, enabling you to launch your projects with
+                            ease and efficiency. Whether you're crafting
+                            eye-catching YouTube thumbnails, engaging
+                            advertisements, vibrant Twitter posts, inspirational
+                            quotes, artistic collages, or more, our prebuilt
+                            templates are precisely tailored to meet your needs.
+                            Start exploring and unleash your creativity today!
+                        </p>
+                    </div>
+                    <div className={styles.largerSection}>
+                        <img
+                            src={EditorTemplatesImage}
+                            alt="Editor Templates"
+                        />
+                    </div>
+                </div>
             </div>
         </div>
     );
