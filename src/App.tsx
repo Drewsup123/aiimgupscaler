@@ -26,7 +26,7 @@ function App() {
             <Routes>
                 <Route path="/" Component={HomePage} />
                 <Route
-                    path="/terms-and-condition"
+                    path="/terms-and-conditions"
                     Component={TermsAndConditionsPage}
                 />
                 <Route path="/bg-removal" Component={BgRemoverPage} />

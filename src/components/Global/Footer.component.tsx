@@ -17,7 +17,7 @@ const Footer = () => {
                     </Link>
                 </li>
                 <li className="menu__item">
-                    <Link className="menu__link" to="/terms">
+                    <Link className="menu__link" to="/terms-and-conditions">
                         Terms of Use
                     </Link>
                 </li>
