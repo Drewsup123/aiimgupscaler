@@ -95,7 +95,11 @@ const Header = () => {
                         <MdAccountCircle size={40} />
                     </Link>
                 ) : (
-                    <button id="loginBtn" onClick={signInWithGoogle}>
+                    <button
+                        id="loginBtn"
+                        className={styles.loginBtn}
+                        onClick={signInWithGoogle}
+                    >
                         Login/Signup
                     </button>
                 )}

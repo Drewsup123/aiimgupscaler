@@ -6,6 +6,7 @@ import AccountPage from "./pages/Account/Account.page";
 import BgRemoverPage from "./pages/BgRemover/BgRemover.page";
 import InPaintingPage from "./pages/Inpainting/inpainting.page";
 import Footer from "./components/Global/Footer.component";
+import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy.page";
 
 function App() {
     return (
@@ -29,6 +30,7 @@ function App() {
                     path="/terms-and-conditions"
                     Component={TermsAndConditionsPage}
                 />
+                <Route path="/privacy-policy" Component={PrivacyPolicy} />
                 <Route path="/bg-removal" Component={BgRemoverPage} />
                 <Route path="/inpainting" Component={InPaintingPage} />
                 <Route path="/account" Component={AccountPage} />
