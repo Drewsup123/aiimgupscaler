@@ -153,16 +153,16 @@ const HomePage = () => {
                 <div className={styles.previewWrapper}>
                     <div className={styles.compareImgWrapper}>
                         <ReactCompareImage
-                            leftImage={TowerBefore}
-                            rightImage={TowerAfter}
+                            leftImage={ParrotBefore}
+                            rightImage={ParrotAfter}
                             leftImageLabel="Before"
                             rightImageLabel="After"
                         />
                     </div>
                     <div className={styles.compareImgWrapper}>
                         <ReactCompareImage
-                            leftImage={ParrotBefore}
-                            rightImage={ParrotAfter}
+                            leftImage={TowerBefore}
+                            rightImage={TowerAfter}
                             leftImageLabel="Before"
                             rightImageLabel="After"
                         />
