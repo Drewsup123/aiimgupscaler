@@ -269,7 +269,6 @@
             },
         });
         const isPremium = sessionStorage.getItem("isPremium");
-        alert(isPremium);
         if (isPremium !== "true") {
             window.location.href = "/";
         }
