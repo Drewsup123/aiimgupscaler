@@ -85,7 +85,7 @@ const HomePage = () => {
                 )}
             </div>
             <div className={styles.dropzoneWrapper}>
-                <StyledDropzone onDrop={handleDrop} />
+                <StyledDropzone onDrop={handleDrop} disabled={!premiumStatus} />
             </div>
             <div className={styles.allPreviewActions}>
                 <button

@@ -62,6 +62,10 @@ const StyledDropzone: React.FC<IProps> = (props: IProps) => {
             "image/jpeg": [".jpeg", ".jpg"],
             "image/png": [".png"],
         },
+        noClick: props.disabled,
+        noKeyboard: props.disabled,
+        noDrag: props.disabled,
+        noDragEventsBubbling: props.disabled,
     });
 
     const style = useMemo(
