@@ -11,6 +11,7 @@ import {
 import { UPDATE_AUTH } from "../../contexts/reducers/auth.reducer";
 import usePremiumStatus from "../../hooks/usePremiumStatus";
 import { MdAccountCircle } from "react-icons/md";
+import Logo from "../../images/logo/logo_no_bg_910.png";
 const provider = new GoogleAuthProvider();
 
 const Header = () => {
@@ -78,6 +79,7 @@ const Header = () => {
     return (
         <header className={styles.header}>
             <Link to="/" className={styles.siteName}>
+                <img src={Logo} alt="Logo" className={styles.logo} />
                 AI Img Tools
             </Link>
             <div className={styles.rightLinks}>
