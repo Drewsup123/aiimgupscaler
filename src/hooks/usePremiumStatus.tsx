@@ -11,10 +11,12 @@ const usePremiumStatus = () => {
             const checkPremiumStatus = async () => {
                 const status = await isUserPremium();
                 setPremiumStatus(status);
+                sessionStorage.setItem("isPremium", status ? "true" : "false");
             };
             checkPremiumStatus();
         } else {
             setPremiumStatus(false);
+            sessionStorage.setItem("isPremium", "false");
         }
     }, [authState.user]);
 
