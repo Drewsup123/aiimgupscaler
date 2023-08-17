@@ -5,7 +5,7 @@ import TermsAndConditionsPage from "./pages/TermsAndConditions/TermsAndCondition
 import AccountPage from "./pages/Account/Account.page";
 import BgRemoverPage from "./pages/BgRemover/BgRemover.page";
 import InPaintingPage from "./pages/Inpainting/inpainting.page";
-import Footer from "./components/Global/Footer.component";
+import Footer from "./components/Global/Footer/Footer.component";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy.page";
 
 function App() {
