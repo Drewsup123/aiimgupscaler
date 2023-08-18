@@ -354,5 +354,6 @@ body * {
 }
 
 a.active {
-    text-decoration: underline !important;
+    border-bottom: 1px solid #fff;
+    transition: 0.5s ease-in-out;
 }
