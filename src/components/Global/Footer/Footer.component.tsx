@@ -28,7 +28,7 @@ const Footer = () => {
                 </li>
                 <li className="menu__item">
                     <Link className="menu__link" to="/">
-                        Contact Us
+                        support@aiimgtools.com
                     </Link>
                 </li>
             </ul>

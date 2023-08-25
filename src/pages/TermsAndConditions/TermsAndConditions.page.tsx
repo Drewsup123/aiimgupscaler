@@ -86,10 +86,7 @@ const TermsAndConditionsPage = () => {
                 the Services, you accept the updated Terms.
             </p>
             <h3>10. Contact Us</h3>
-            <p>
-                [Provide contact information or directions for how users may get
-                in touch with you.]
-            </p>
+            <p>support@aiimgtools.com</p>
         </div>
     );
 };
