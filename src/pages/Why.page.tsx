@@ -1,7 +1,7 @@
 const WhyPage = () => {
     return (
         <div className="route">
-            <h1>Why page</h1>
+            <h1>Why Page</h1>
         </div>
     );
 };
