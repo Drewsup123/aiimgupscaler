@@ -56,6 +56,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@firebase/firestore-types": "^3.0.0",
     "@types/deepai": "^1.0.0",
     "@types/react-icons": "^3.0.0"
