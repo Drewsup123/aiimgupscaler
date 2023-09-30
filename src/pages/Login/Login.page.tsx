@@ -13,8 +13,6 @@ const provider = new GoogleAuthProvider();
 const LoginPage = () => {
     const { authState, updateAuthState } = useAuth();
 
-    console.log("Firebase Auth : ", auth);
-
     const signInWithGoogle = async () => {
         return await auth
             .setPersistence(browserLocalPersistence)
@@ -29,7 +27,6 @@ const LoginPage = () => {
                         const user = result.user;
                         // IdP data available using getAdditionalUserInfo(result)
                         // ...
-                        console.log("Logged In! : ", user, token);
                         await setDoc(
                             doc(db, "users", user.uid),
                             {
@@ -44,7 +41,6 @@ const LoginPage = () => {
                             user,
                             token,
                         });
-                        console.log("Current user from auth : ", auth);
                     })
                     .catch((error) => {
                         // Handle Errors here.
@@ -59,8 +55,6 @@ const LoginPage = () => {
                     });
             });
     };
-
-    console.log("Auth State : ", authState);
 
     return (
         <div className="route">

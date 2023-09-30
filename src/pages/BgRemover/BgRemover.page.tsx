@@ -20,14 +20,13 @@ const BgRemoverPage = () => {
 
     const handleDrop = useCallback(
         (droppedFiles: File[]) => {
-            console.log("Dropped Files : ", droppedFiles);
             const newFiles = droppedFiles.map((file) => ({
                 file,
                 id: generateId(),
             }));
-            console.log("Old Files : ", files);
             setFiles([...filesRef.current, ...newFiles]);
         },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [files]
     );
 

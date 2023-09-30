@@ -22,7 +22,6 @@ const ImageCard = (props: IProps) => {
 
     const startUpscale = async () => {
         const imageUrl: string = await convertToBase64(file.file);
-        console.log(imageUrl);
         setLoading(true);
         deepai
             .callStandardApi("torch-srgan", {
@@ -54,6 +53,7 @@ const ImageCard = (props: IProps) => {
         if (props.rescaleKey && !upscaledUrl && !loading) {
             startUpscale();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.rescaleKey]);
 
     return (

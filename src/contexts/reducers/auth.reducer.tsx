@@ -13,13 +13,6 @@ export const initialAuthState: IAuth = auth.currentUser?.uid
       }
     : { authenticated: false };
 
-console.log(
-    "Initial Auth State : ",
-    initialAuthState,
-    auth.currentUser?.uid,
-    auth.currentUser
-);
-
 interface IAction {
     type: string;
     payload?: IAuth;

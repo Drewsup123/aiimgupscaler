@@ -24,12 +24,10 @@ const ImageCard = (props: IProps) => {
 
     const startBgRemoval = async () => {
         const imageUrl: string = await convertToBase64(file.file);
-        console.log(imageUrl);
         setLoading(true);
         //! Call background removal
         imglyRemoveBackground(imageUrl, {
             progress: (key: any, current: any, total: any) => {
-                console.log(`Downloading ${key}: ${current} of ${total}`);
                 if (!current || !total) return;
                 const progress = (current / total) * 100;
                 if (progress > percentRef.current) {
@@ -61,6 +59,7 @@ const ImageCard = (props: IProps) => {
         if (props.removeBgKey && !removedBgUrl && !loading) {
             startBgRemoval();
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [props.removeBgKey]);
 
     return (

@@ -15,9 +15,7 @@ export const createCheckoutSession = async (uid: string) => {
         const docRef = await addDoc(checkout_sessions_ref, checkoutInfo);
         onSnapshot(docRef, async (doc: any) => {
             const data = doc.data();
-            console.log("Current Doc : ", data);
             if (data?.sessionId) {
-                console.log("Found Session ID");
                 const stripe = await getStripe();
                 stripe?.redirectToCheckout({ sessionId: data.sessionId });
             }
