@@ -1,0 +1,37 @@
+name: Deploy to Firebase Hosting on merge
+'on':
+  push:
+    branches:
+      - main
+jobs:
+  build_and_deploy:
+    runs-on: ubuntu-latest
+    env: 
+      REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
+      REACT_APP_APP_ID: ${{ secrets.REACT_APP_APP_ID }}
+      REACT_APP_AUTH_DOMAIN: ${{ secrets.REACT_APP_AUTH_DOMAIN }}
+      REACT_APP_DEEP_API_KEY: ${{ secrets.REACT_APP_DEEP_API_KEY }}
+      REACT_APP_MEASUREMENT_ID: ${{ secrets.REACT_APP_MEASUREMENT_ID }}
+      REACT_APP_MESSAGING_SENDER_ID: ${{ secrets.REACT_APP_MESSAGING_SENDER_ID }}
+      REACT_APP_PROJECT_ID: ${{ secrets.REACT_APP_PROJECT_ID }}
+      REACT_APP_STORAGE_BUCKET: ${{ secrets.REACT_APP_STORAGE_BUCKET }}
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo "Creating .env file"
+      - run: echo "REACT_APP_API_KEY=${{ env.REACT_APP_API_KEY }}" > .env
+      - run: echo "REACT_APP_APP_ID=${{ env.REACT_APP_APP_ID }}" >> .env
+      - run: echo "REACT_APP_AUTH_DOMAIN=${{ env.REACT_APP_AUTH_DOMAIN }}" >> .env
+      - run: echo "REACT_APP_DEEP_API_KEY=${{ env.REACT_APP_DEEP_API_KEY }}" >> .env
+      - run: echo "REACT_APP_MEASUREMENT_ID=${{ env.REACT_APP_MEASUREMENT_ID }}" >> .env
+      - run: echo "REACT_APP_MESSAGING_SENDER_ID=${{ env.REACT_APP_MESSAGING_SENDER_ID }}" >> .env
+      - run: echo "REACT_APP_PROJECT_ID=${{ env.REACT_APP_PROJECT_ID }}" >> .env
+      - run: echo "REACT_APP_STORAGE_BUCKET=${{ env.REACT_APP_STORAGE_BUCKET }}" >> .env
+      - run: cat .env  # To verify that .env file is created successfully
+      - run: npm ci
+      - run: npm run build
+      - uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_AIIMGTOOLSPROD }}'
+          channelId: live
+          projectId: aiimgtoolsprod
