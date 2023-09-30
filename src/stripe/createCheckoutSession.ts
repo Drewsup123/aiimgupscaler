@@ -11,10 +11,13 @@ export const createCheckoutSession = async (uid: string) => {
         success_url: window.location.origin,
         cancel_url: window.location.origin,
     };
+    console.log("Checkout Info : ", checkoutInfo);
     try {
         const docRef = await addDoc(checkout_sessions_ref, checkoutInfo);
+        console.log("Created checkout");
         onSnapshot(docRef, async (doc: any) => {
             const data = doc.data();
+            console.log("Snap shot : ", data);
             if (data?.sessionId) {
                 const stripe = await getStripe();
                 stripe?.redirectToCheckout({ sessionId: data.sessionId });
