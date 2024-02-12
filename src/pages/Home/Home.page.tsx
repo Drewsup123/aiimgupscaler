@@ -36,14 +36,13 @@ const HomePage = () => {
 
     const handleDrop = useCallback(
         (droppedFiles: File[]) => {
-            console.log("Dropped Files : ", droppedFiles);
             const newFiles = droppedFiles.map((file) => ({
                 file,
                 id: generateId(),
             }));
-            console.log("Old Files : ", files);
             setFiles([...filesRef.current, ...newFiles]);
         },
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         [files]
     );
 
@@ -201,13 +200,6 @@ const HomePage = () => {
                         <h2>Some of our Features:</h2>
                         <ul>
                             <li>
-                                <strong>Quick Adjustments:</strong> With a wide
-                                array of sliders and preset options, you can
-                                tweak exposure, contrast, color balance, and
-                                more, all at the click of a button. Your photo
-                                enhancements are now just seconds away!
-                            </li>
-                            <li>
                                 <strong>Shapes & Text:</strong> Want to add a
                                 personal touch? Insert various shapes and
                                 overlay text in numerous fonts, colors, and
@@ -227,12 +219,6 @@ const HomePage = () => {
                                 profile picture, we've got you covered.
                             </li>
                             <li>
-                                <strong>Icon Integration:</strong> Browse
-                                through our extensive library of icons or upload
-                                your own, and sprinkle them across your pictures
-                                for that extra flair.
-                            </li>
-                            <li>
                                 <strong>Add Other Images:</strong> Want to
                                 create a collage or simply blend images? Our
                                 editor enables you to insert multiple pictures,
@@ -250,18 +236,8 @@ const HomePage = () => {
                                 play with opacity to achieve the look you
                                 desire.
                             </li>
+                            <li>And more!</li>
                         </ul>
-
-                        <p style={{ textAlign: "center", marginTop: 20 }}>
-                            AI IMG TOOLS editor is not just an editor; it's a
-                            creative workshop designed to meet your artistic
-                            needs without any steep learning curves. With an
-                            intuitive interface, and constant updates this your
-                            digital canvas to create, edit, and express. Whether
-                            you're a blogger, marketer, photographer, or just
-                            someone who loves playing with photos, our editor
-                            brings your vision to life.
-                        </p>
                     </div>
                 </div>
                 <div className={styles.sectionWrapper}>

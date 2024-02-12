@@ -9,3 +9,5 @@ export const FIREBASE_MESSAGING_SENDER_ID =
 export const FIREBASE_APP_ID = process.env.REACT_APP_APP_ID || "";
 export const FIREBASE_MEASUREMENT_ID =
     process.env.REACT_APP_MEASUREMENT_ID || "";
+export const PREMIUM_PRODUCT_ID =
+    process.env.REACT_APP_PREMIUM_PRODUCT_ID || "";

@@ -9,14 +9,13 @@ import {
     browserLocalPersistence,
 } from "firebase/auth";
 import { UPDATE_AUTH } from "../../contexts/reducers/auth.reducer";
-import usePremiumStatus from "../../hooks/usePremiumStatus";
+// import usePremiumStatus from "../../hooks/usePremiumStatus";
 import { MdAccountCircle } from "react-icons/md";
-import Logo from "../../images/logo/logo_no_bg_910.png";
 const provider = new GoogleAuthProvider();
 
 const Header = () => {
     const { authState, updateAuthState } = useAuth();
-    const premiumStatus = usePremiumStatus();
+    // const premiumStatus = usePremiumStatus();
 
     const signInWithGoogle = async () => {
         return await auth
@@ -32,7 +31,6 @@ const Header = () => {
                         const user = result.user;
                         // IdP data available using getAdditionalUserInfo(result)
                         // ...
-                        console.log("Logged In! : ", user, token);
                         await setDoc(
                             doc(db, "users", user.uid),
                             {
@@ -47,27 +45,28 @@ const Header = () => {
                             user,
                             token,
                         });
-                        console.log("Current user from auth : ", auth);
                     })
                     .catch((error) => {
                         // Handle Errors here.
                         const errorCode = error.code;
                         const errorMessage = error.message;
                         // The email of the user's account used.
-                        const email = error.customData.email;
-                        // The AuthCredential type that was used.
-                        const credential =
-                            GoogleAuthProvider.credentialFromError(error);
-                        // ...
+                        // const email = error.customData.email;
+                        // // The AuthCredential type that was used.
+                        // const credential =
+                        //     GoogleAuthProvider.credentialFromError(error);
+                        // // ...
+                        console.log(errorCode, errorMessage);
+                        alert(
+                            "There was an error signing in. Please try again."
+                        );
                     });
             });
     };
 
     auth.onAuthStateChanged(async () => {
-        console.log("Auth state changed : ", auth);
         if (!authState.authenticated && auth.currentUser?.uid) {
             const token = await auth.currentUser.getIdTokenResult(true);
-            console.log("token : ", token);
             updateAuthState(UPDATE_AUTH, {
                 authenticated: true,
                 user: auth.currentUser,
@@ -79,7 +78,6 @@ const Header = () => {
     return (
         <header className={styles.header}>
             <Link to="/" className={styles.siteName}>
-                <img src={Logo} alt="Logo" className={styles.logo} />
                 AI Img Tools
             </Link>
             <div className={styles.rightLinks}>
