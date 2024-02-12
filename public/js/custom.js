@@ -268,9 +268,9 @@
                 // toastr.error("Error!", "Lorem ipsum dolor");
             },
         });
-        const isPremium = sessionStorage.getItem("isPremium");
-        if (isPremium !== "true") {
-            window.location.href = "/";
-        }
+        // const isPremium = sessionStorage.getItem("isPremium");
+        // if (isPremium !== "true") {
+        //     window.location.href = "/";
+        // }
     });
 })(jQuery);
