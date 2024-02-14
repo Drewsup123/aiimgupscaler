@@ -38,6 +38,38 @@ MEDIA QUERIES
 
 */
 
+/* ================= GLOBAL VARIABLES ================== */
+
+:root {
+    --purple-main: #AF40FF;
+    --purple-1: #A93EF6;
+    --purple-2: #9235D4;
+    --purple-3: #AF40FF;
+    --purple-4: #7B2DB3;
+    --purple-5: #632491;
+    --blue-main: #5B42F3;
+    --blue-1: #563FEA;
+    --blue-2: #4936C8;
+    --blue-3: #5B42F3;
+    --blue-4: #3D2DA6;
+    --blue-5: #302484;
+    --teal-main: #00DDEB;
+    --teal-1: #00D3E2;
+    --teal-2: #00B3C0;
+    --teal-3: #00DDEB;
+    --teal-4: #00949E;
+    --teal-5: #00747C;
+    --red-main: #DC143C;
+    --red-1: #D31339;
+    --red-2: #B11030;
+    --red-3: #DC143C;
+    --red-4: #8F0D27;
+    --red-5: #700A1F;
+    --ltr-gradient: linear-gradient(0deg,var(--purple-main), var(--blue-main) 50%, var(--teal-main));
+    --rtl-gradient: linear-gradient(180deg,var(--purple-main), var(--blue-main) 50%, var(--teal-main));
+    --primary-gradient: linear-gradient(180deg, var(--purple-main), var(--blue-main) 50%, var(--blue-1));
+}
+
 /* ================= LOADER ================== */
 
 .palleon-loader-inner {
@@ -350,9 +382,9 @@ body.layers-closed #palleon-body {
     z-index: 99;
     background-image: linear-gradient(
         144deg,
-        #af40ff,
-        #5b42f3 50%,
-        #00ddeb
+        var(--purple-main),
+        var(--blue-main) 50%,
+        var(--teal-main)
     ) !important;
 }
 

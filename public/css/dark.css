@@ -39,7 +39,7 @@ h6 {
 }
 
 .text-danger {
-    color: #F44336 !important;
+    color: var(--red-main) !important;
 }
 
 .text-success {
@@ -65,7 +65,7 @@ h6 {
 }
 
 .notice.notice-danger {
-    border-left: 4px solid #F44336;
+    border-left: 4px solid var(--red-main);
 }
 
 .notice.notice-warning {
@@ -90,8 +90,10 @@ h6 {
 
 #palleon-toggle-left,
 #palleon-toggle-right {
-    background-color: #121212;
-    border: 1px solid #303030;
+    background-image: var(--ltr-gradient);
+    border: 1px solid var(--blue-4);
+    background-size: 100% 100%;
+    transform: scale(1)
 }
 
 #palleon-toggle-right.closed,
@@ -106,22 +108,14 @@ h6 {
 
 #palleon-toggle-left:hover .material-icons,
 #palleon-toggle-right:hover .material-icons {
-    color: #6658ea;
+    color: #fff;
 }
 
-/* ================= TOP BAR ================== */
-
-#palleon-top-bar {
-    background: #090909;
-    border-bottom: 1px solid #303030;
-}
-
-.palleon-top-bar-menu .palleon-btn-simple {
-    color:#fff;
-}
-  
-.palleon-top-bar-menu .palleon-btn-simple:disabled {
-    color:#aaa
+#palleon-toggle-left:hover,
+#palleon-toggle-right:hover {
+    background-size: 200% 200%;
+    border: 1px solid var(--blue-5);
+    transition: all 0.5s ease-in-out;
 }
 
 /* ================= DROPDOWN ================== */
@@ -418,18 +412,20 @@ button.palleon-icon-menu-btn:hover {
 
 .palleon-btn:hover,
 .palleon-btn.primary:hover {
-    background: #5546e8;
+    background-size: 200% 200%;
+    background-position: bottom;
 }
 
 .palleon-btn.active,
 .palleon-btn.active:hover,
 .palleon-btn.primary {
-    background: #6658ea;
+    background-image: var(--primary-gradient);
+    background-size: 100% 100%;
     color: #fff;
 }
 
 .palleon-btn.danger {
-    background: #F44336;
+    background: var(--red-main);
 }
 
 .palleon-btn.danger:hover {
