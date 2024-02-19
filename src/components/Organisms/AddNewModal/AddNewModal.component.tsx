@@ -30,6 +30,12 @@ const AddNewModal = () => {
                                 </span>
                                 Blank Canvas
                             </li>
+                            <li data-target="#modal-ai-image">
+                                <span className="material-icons">
+                                    landscape
+                                </span>
+                                AI Image
+                            </li>
                         </ul>
                         {/* New Image */}
                         <div
@@ -2039,6 +2045,34 @@ const AddNewModal = () => {
                                         Create
                                     </button>
                                 </div>
+                            </div>
+                        </div>
+                        {/* AI IMAGE */}
+                        <div
+                            id="modal-ai-image"
+                            className="palleon-tab palleon-modal-bg"
+                        >
+                            <div className="palleon-tabs">
+                                <ul
+                                    id="antimena-add-new-apis"
+                                    className="palleon-tabs-menu"
+                                >
+                                    <li data-target="#sai-text-to-text-tab">
+                                        Stability.ai
+                                    </li>
+                                    <li data-target="#oai-text-to-text-tab">
+                                        OpenAI
+                                    </li>
+                                    <li data-target="#clipdrop-text-to-text-tab">
+                                        Clipdrop
+                                    </li>
+                                    <li
+                                        id="sketch-to-image-link"
+                                        data-target="#clipdrop-sketch-to-image-tab"
+                                    >
+                                        Sketch To Image
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
