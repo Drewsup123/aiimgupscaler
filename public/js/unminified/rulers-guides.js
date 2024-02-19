@@ -113,8 +113,8 @@ var Dragdrop = function (evt) {
             }
         },
         start       = function (e, src) {
-            if (src.className.indexOf('draggable') !== -1) {
-
+            if (typeof src.className !== undefined && typeof src.className.indexOf === 'function') {
+                if (src.className.indexOf('draggable') !== -1) {
                 evt.prevent(e);
 
                 moveHandler = evt.attach('mousemove', document, move, true);
@@ -129,10 +129,7 @@ var Dragdrop = function (evt) {
                 }
 
                 elem.onStart(elem);
-
-                if (elem.setPointerCapture) {
-                    elem.setPointerCapture('rulerPointerCapture');
-                }
+            }
             }
         },
         stop        = function () {
@@ -141,9 +138,6 @@ var Dragdrop = function (evt) {
                 elem.onStop(elem);
                 evt.detach('mousemove', document, moveHandler);
 
-                if (elem.releasePointerCapture) {
-                    elem.releasePointerCapture('rulerPointerCapture');
-                }
             }
         };
 
@@ -513,8 +507,10 @@ var RulersGuides = function (evt, dragdrop, container) {
 
                 menuList.appendChild(menuItems);
 
+                if (document.getElementById('palleon-ruler-icon') != null) {
                 document.getElementById('palleon-ruler-icon').appendChild(menuBtn);
                 document.getElementById('palleon-ruler-icon').appendChild(menuList);
+                }
 
                 evt.attach('mousedown', menuBtn, function () {
                     toggles.rulers.txt.nodeValue = (rulerStatus === 1)
@@ -785,3 +781,8 @@ var RulersGuides = function (evt, dragdrop, container) {
         }
     });
 };
+if (document.body.clientWidth >= 1200) {
+    var evt = new Event('palleon-ruler'),
+    dragdrop = new Dragdrop(evt),
+    rg  = new RulersGuides(evt, dragdrop, document.getElementById("palleon-ruler"));
+}

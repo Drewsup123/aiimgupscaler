@@ -41,33 +41,48 @@ MEDIA QUERIES
 /* ================= GLOBAL VARIABLES ================== */
 
 :root {
-    --purple-main: #AF40FF;
-    --purple-1: #A93EF6;
-    --purple-2: #9235D4;
-    --purple-3: #AF40FF;
-    --purple-4: #7B2DB3;
+    --purple-main: #af40ff;
+    --purple-1: #a93ef6;
+    --purple-2: #9235d4;
+    --purple-3: #af40ff;
+    --purple-4: #7b2db3;
     --purple-5: #632491;
-    --blue-main: #5B42F3;
-    --blue-1: #563FEA;
-    --blue-2: #4936C8;
-    --blue-3: #5B42F3;
-    --blue-4: #3D2DA6;
+    --blue-main: #5b42f3;
+    --blue-1: #563fea;
+    --blue-2: #4936c8;
+    --blue-3: #5b42f3;
+    --blue-4: #3d2da6;
     --blue-5: #302484;
-    --teal-main: #00DDEB;
-    --teal-1: #00D3E2;
-    --teal-2: #00B3C0;
-    --teal-3: #00DDEB;
-    --teal-4: #00949E;
-    --teal-5: #00747C;
-    --red-main: #DC143C;
-    --red-1: #D31339;
-    --red-2: #B11030;
-    --red-3: #DC143C;
-    --red-4: #8F0D27;
-    --red-5: #700A1F;
-    --ltr-gradient: linear-gradient(0deg,var(--purple-main), var(--blue-main) 50%, var(--teal-main));
-    --rtl-gradient: linear-gradient(180deg,var(--purple-main), var(--blue-main) 50%, var(--teal-main));
-    --primary-gradient: linear-gradient(180deg, var(--purple-main), var(--blue-main) 50%, var(--blue-1));
+    --teal-main: #00ddeb;
+    --teal-1: #00d3e2;
+    --teal-2: #00b3c0;
+    --teal-3: #00ddeb;
+    --teal-4: #00949e;
+    --teal-5: #00747c;
+    --red-main: #dc143c;
+    --red-1: #d31339;
+    --red-2: #b11030;
+    --red-3: #dc143c;
+    --red-4: #8f0d27;
+    --red-5: #700a1f;
+    --ltr-gradient: linear-gradient(
+        0deg,
+        var(--purple-main),
+        var(--blue-main) 50%,
+        var(--teal-main)
+    );
+    --rtl-gradient: linear-gradient(
+        180deg,
+        var(--purple-main),
+        var(--blue-main) 50%,
+        var(--teal-main)
+    );
+    --primary-gradient: linear-gradient(
+        180deg,
+        var(--purple-main),
+        var(--blue-main) 50%,
+        var(--blue-1)
+    );
 }
 
 /* ================= LOADER ================== */

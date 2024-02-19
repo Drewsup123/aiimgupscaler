@@ -16,12 +16,12 @@
 }
 
 *::-webkit-scrollbar-track {
-    background: #303030;
+    background: #eee;
 }
 
 *::-webkit-scrollbar-thumb {
     background-color: #999;
-    border: 4px solid #303030;
+    border: 4px solid #eee;
 }
 
 body {
@@ -315,7 +315,11 @@ button.palleon-icon-menu-btn:hover {
     background: #eee;
 }
 
-.palleon-frame,
+.palleon-frame {
+    border: 1px solid #eee;
+    background: #eee;
+}
+
 .palleon-element {
     border: 1px solid #eee;
     background: #eee;
@@ -330,8 +334,7 @@ button.palleon-icon-menu-btn:hover {
 }
 
 .palleon-element.dark {
-    background: #6658ea;
-  border-color: #6658ea;
+    background: #303030;
 }
 
 .palleon-frame:hover,
@@ -405,6 +408,57 @@ button.palleon-icon-menu-btn:hover {
 
 .palleon-element>.material-icons {
     color: #494949;
+}
+
+#palleon-shapes-grid .palleon-shape {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Cpath d='M1,0H0V1H2V2H1' fill='%23FFFFFF'/%3E%3C/svg%3E") left top/contain #ccc;
+    background-size: 10px 10px;
+}
+
+#palleon-shapes-grid .palleon-shape:hover {
+    background: #6658ea;
+}
+
+#palleon-shapes-grid .palleon-shape svg * {
+    fill: #494949 !important;
+}
+
+#palleon-shapes-grid .palleon-shape:hover svg * {
+    fill: #fff !important;
+}
+
+/* ================= APPS ================== */
+
+.palleon-apps-menu-item {
+    background: #eee;
+}
+
+.palleon-apps-menu-item:hover {
+    background: #111;
+}
+
+.palleon-apps-menu-item-desc {
+    background: #eee;
+    color: #111;
+}
+
+.palleon-apps-menu-item:hover .palleon-apps-menu-item-desc {
+    background: #111;
+    color: #fff;
+}
+
+.palleon-app-peview {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Cpath d='M1,0H0V1H2V2H1' fill='%23FFFFFF'/%3E%3C/svg%3E") left top/contain #ccc;
+    background-size: 10px 10px;
+}
+
+.palleon-colorbrewer-item {
+    border: 1px solid #bcbcbc;
+}
+
+.palleon-colorbrewer-item.active,
+.palleon-colorbrewer-item:hover {
+    border: 1px solid #111;
 }
 
 /* ================= BUTTONS ================== */
@@ -561,6 +615,10 @@ ul.palleon-accordion>li>a>.data-count {
     color: #fff;
 }
 
+.material-icons.my-favorites-star {
+    color: #FFC107;
+}
+
 /* ================= RANGESLIDER ================== */
 
 .palleon-slider {
@@ -621,6 +679,11 @@ ul.palleon-accordion>li>a>.data-count {
     border-top: 1px dashed #bcbcbc;
 }
 
+#palleon-barcode-wrap {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Cpath d='M1,0H0V1H2V2H1' fill='%23FFFFFF'/%3E%3C/svg%3E") left top/contain #ccc;
+    background-size: 10px 10px;
+}
+
 /* ================= COLORPICKER ================== */
 
 .palleon-colorpicker,
@@ -675,7 +738,7 @@ ul.palleon-accordion>li>a>.data-count {
 
 .palleon-select {
     color: #494949;
-    background: #eee url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23aaaaaa' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.5rem center;
+    background: #eee url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23aaaaaa' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E") no-repeat right 0.1rem center;
     background-size: 20px 10px;
     border: 1px solid #bcbcbc;
 }
@@ -898,17 +961,28 @@ ul.palleon-accordion>li>a>.data-count {
     background-size: 15px 15px;
 }
 
+a.iconfinder-url,
+a.pixabay-url,
 a.pexels-url {
     color: #6658ea;
     background: #fff;
 }
 
+a.iconfinder-url:hover,
+a.pixabay-url:hover,
 a.pexels-url:hover {
     color: #544abf;
 }
 
-#pexels-credit {
-    color:#494949;
+#iconfinder-credit,
+#pexels-credit,
+#pixabay-credit {
+    color: #494949;
+}
+
+#palleon-iconfinder-grid .palleon-element {
+    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='2' height='2'%3E%3Cpath d='M1,0H0V1H2V2H1' fill='%23FFFFFF'/%3E%3C/svg%3E") left top/contain #ccc;
+    background-size: 10px 10px;
 }
 
 /* ================= RULER ================== */

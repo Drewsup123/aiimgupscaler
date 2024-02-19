@@ -9,7 +9,7 @@ import GlobalStateProvider from "./contexts/globalStateProvider";
 deepai.setApiKey(process.env.REACT_APP_DEEP_API_KEY || "");
 
 const root = ReactDOM.createRoot(
-    document.getElementById("root") as HTMLElement
+    document.getElementById("palleon") as HTMLElement
 );
 root.render(
     <React.StrictMode>

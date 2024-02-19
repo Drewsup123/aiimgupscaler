@@ -2,11 +2,24 @@
     "use strict";
 
     $(document).ready(function () {
-        /* Initialize Palleon plugin */
         $("#palleon").palleon({
             baseURL: "./", // The url of the main directory. For example; "http://www.mysite.com/palleon-js/"
 
+            //////////////////////* API SETTINGS *//////////////////////
+
+            PexelsApiKey: "", // Your Pexels API key. @see https://www.pexels.com/api/documentation/
+            PexelsPagination: 20, // Max. number of images to show.
+            PexelsLanguage: "en-US", // The locale of the search you are performing. The current supported locales are: 'en-US' 'pt-BR' 'es-ES' 'ca-ES' 'de-DE' 'it-IT' 'fr-FR' 'sv-SE' 'id-ID' 'pl-PL' 'ja-JP' 'zh-TW' 'zh-CN' 'ko-KR' 'th-TH' 'nl-NL' 'hu-HU' 'vi-VN' 'cs-CZ' 'da-DK' 'fi-FI' 'uk-UA' 'el-GR' 'ro-RO' 'nb-NO' 'sk-SK' 'tr-TR' 'ru-RU'
+            PexelsImgSize: "large2x", // Valid image sizes are; original large2x large medium small portrait landscape
+            PixabayApiKey: "", // Your Pixabay API key. @see https://pixabay.com/api/docs/
+            PixabayPagination: 16, // Max. number of images to show.
+            PixabayLanguage: "en", // The locale of the search you are performing. Accepted values: cs, da, de, en, es, fr, id, it, hu, nl, no, pl, pt, ro, sk, fi, sv, tr, vi, th, bg, ru, el, ja, ko, zh
+            PixabaySafeSearch: "false", // A flag indicating that only images suitable for all ages should be returned. Accepted values: "true", "false".
+            PixabayEditorsChice: "false", // Select images that have received an Editor's Choice award. Accepted values: "true", "false".
+            apiCaching: true, // Browser caching for API requests. Boolean value: true or false
+
             //////////////////////* CANVAS SETTINGS *//////////////////////
+
             fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif", // Should be a web safe font
             fontSize: 60, // Default font size
             fontWeight: "normal", // e.g. bold, normal, 400, 600, 800
@@ -41,236 +54,21 @@
             watermarkFontWeight: "bold", // e.g. bold, normal, 400, 600, 800
             watermarkBackgroundColor: "#FFF", // Watermark background color
             watermarkLocation: "bottom-right", // Possible values: "bottom-right", "bottom-left", "top-left" and "top-right".
+            templatePreview: true, // true or false
 
             //////////////////////* CUSTOM FUNCTIONS *//////////////////////
+
             customFunctions: function (selector, canvas, lazyLoadInstance) {
+                if (typeof antimena === "function") {
+                    antimena(selector, canvas, lazyLoadInstance);
+                }
                 /**
                  * @see http://fabricjs.com/fabric-intro-part-1#canvas
                  * You may need to update "lazyLoadInstance" if you are going to populate items of a grid with ajax.
                  * lazyLoadInstance.update();
                  * @see https://github.com/verlok/vanilla-lazyload
                  */
-
-                /* Template - Add to Favorite */
-                selector
-                    .find(".template-grid")
-                    .on("click", ".template-favorite button.star", function () {
-                        var button = $(this);
-                        var templateid = button.data("templateid");
-
-                        /* Do what you want */
-
-                        toastr.success(
-                            "To make 'saving functions' work, you should have a database on your server and integrate it to Palleon using a server-side language. See Documentation -> Integration.",
-                            "Info"
-                        );
-                        // toastr.error("Error!", "Lorem ipsum dolor");
-                    });
-
-                /* Frame - Add to Favorite */
-                selector
-                    .find(".palleon-frames-grid")
-                    .on("click", ".frame-favorite button.star", function () {
-                        var button = $(this);
-                        var frameid = button.data("frameid");
-
-                        /* Do what you want */
-
-                        toastr.success(
-                            "To make 'saving functions' work, you should have a database on your server and integrate it to Palleon using a server-side language. See Documentation -> Integration.",
-                            "Info"
-                        );
-                        // toastr.error("Error!", "Lorem ipsum dolor");
-                    });
-
-                /* Element - Add to Favorite */
-                selector
-                    .find(".palleon-grid")
-                    .on("click", ".element-favorite button.star", function () {
-                        var button = $(this);
-                        var elementid = button.data("elementid");
-
-                        /* Do what you want */
-
-                        toastr.success(
-                            "To make 'saving functions' work, you should have a database on your server and integrate it to Palleon using a server-side language. See Documentation -> Integration.",
-                            "Info"
-                        );
-                        // toastr.error("Error!", "Lorem ipsum dolor");
-                    });
-
-                /* Delete Template From Library */
-                selector
-                    .find(".palleon-template-list")
-                    .on("click", ".palleon-template-delete", function () {
-                        var answer = window.confirm(
-                            "Are you sure you want to delete the template permanently?"
-                        );
-                        if (answer) {
-                            var target = $(this).data("target");
-                            $(this).parent().parent().remove();
-
-                            /* Do what you want */
-
-                            toastr.success(
-                                "To make 'saving functions' work, you should have a database on your server and integrate it to Palleon using a server-side language. See Documentation -> Integration.",
-                                "Info"
-                            );
-                            // toastr.error("Error!", "Lorem ipsum dolor");
-                        }
-                    });
-
-                /* Upload Image To Media Library */
-                selector
-                    .find("#palleon-library-upload-img")
-                    .on("change", function (e) {
-                        var file_data = this.files[0];
-
-                        /* Do what you want */
-
-                        toastr.success(
-                            "To make 'saving functions' work, you should have a database on your server and integrate it to Palleon using a server-side language. See Documentation -> Integration.",
-                            "Info"
-                        );
-                        // toastr.error("Error!", "Lorem ipsum dolor");
-                    });
-
-                /* Delete Image From Media Library */
-                selector
-                    .find(".media-library-grid")
-                    .on("click", ".palleon-library-delete", function () {
-                        var answer = window.confirm(
-                            "Are you sure you want to delete the image permanently?"
-                        );
-                        if (answer) {
-                            var target = $(this).data("target");
-                            $(this).parent().remove();
-
-                            /* Do what you want */
-
-                            toastr.success("Deleted!", "Lorem ipsum dolor");
-                            // toastr.error("Error!", "Lorem ipsum dolor");
-                        }
-                    });
-
-                /* Upload SVG To Media Library */
-                selector
-                    .find("#palleon-svg-library-upload-img")
-                    .on("change", function (e) {
-                        var file_data = this.files[0];
-
-                        /* Do what you want */
-
-                        toastr.success(
-                            "To make 'saving functions' work, you should have a database on your server and integrate it to Palleon using a server-side language. See Documentation -> Integration.",
-                            "Info"
-                        );
-                        // toastr.error("Error!", "Lorem ipsum dolor");
-                    });
-
-                /* Delete SVG From Media Library */
-                selector
-                    .find(".svg-library-grid")
-                    .on("click", ".palleon-svg-library-delete", function () {
-                        var answer = window.confirm(
-                            "Are you sure you want to delete the image permanently?"
-                        );
-                        if (answer) {
-                            var target = $(this).data("target");
-                            $(this).parent().remove();
-
-                            /* Do what you want */
-
-                            toastr.success("Deleted!", "Lorem ipsum dolor");
-                            // toastr.error("Error!", "Lorem ipsum dolor");
-                        }
-                    });
-
-                // Save preferences
-                selector
-                    .find("#palleon-preferences-save")
-                    .on("click", function () {
-                        var button = $(this);
-                        var settings = {};
-                        var keys = [];
-                        var values = [];
-                        selector
-                            .find("#palleon-preferences .preference")
-                            .each(function (index, value) {
-                                keys.push($(this).attr("id"));
-                                values.push($(this).val());
-                            });
-
-                        for (let i = 0; i < keys.length; i++) {
-                            settings[keys[i]] = values[i];
-                        }
-
-                        var preferences = JSON.stringify(settings);
-
-                        /* Do what you want */
-
-                        toastr.success(
-                            "To make 'saving functions' work, you should have a database on your server and integrate it to Palleon using a server-side language. See Documentation -> Integration.",
-                            "Info"
-                        );
-                        // toastr.error("Error!", "Lorem ipsum dolor");
-                    });
-            },
-
-            //////////////////////* SAVE TEMPLATE *//////////////////////
-            saveTemplate: function (selector, template) {
-                /**
-                 * var template is JSON string
-                 * @see http://fabricjs.com/docs/fabric.Canvas.html#toDataURL
-                 */
-
-                // var name = selector.find('#palleon-json-save-name').val();
-
-                console.log(template);
-
-                /* Do what you want */
-
-                toastr.success(
-                    "To make 'saving functions' work, you should have a database on your server and integrate it to Palleon using a server-side language. See Documentation -> Integration.",
-                    "Info"
-                );
-                // toastr.error("Error!", "Lorem ipsum dolor");
-            },
-
-            //////////////////////* SAVE IMAGE *//////////////////////
-            saveImage: function (selector, imgData) {
-                var name = selector.find("#palleon-save-img-name").val();
-                var quality = parseFloat(
-                    selector.find("#palleon-save-img-quality").val()
-                );
-                var format = selector.find("#palleon-save-img-format").val();
-
-                if (format == "svg") {
-                    // var imgData is raw svg code
-                    console.log(imgData);
-
-                    /* Do what you want */
-                } else {
-                    /**
-                     * var imgData is DataURL
-                     * @see https://flaviocopes.com/data-urls/
-                     * @see http://fabricjs.com/docs/fabric.Canvas.html#toDataURL
-                     */
-                    console.log(imgData);
-
-                    /* Do what you want */
-                }
-
-                toastr.success(
-                    "To make 'saving functions' work, you should have a database on your server and integrate it to Palleon using a server-side language. See Documentation -> Integration.",
-                    "Info"
-                );
-                // toastr.error("Error!", "Lorem ipsum dolor");
             },
         });
-        // const isPremium = sessionStorage.getItem("isPremium");
-        // if (isPremium !== "true") {
-        //     window.location.href = "/";
-        // }
     });
 })(jQuery);

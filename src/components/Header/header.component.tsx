@@ -76,20 +76,81 @@ const Header = () => {
     });
 
     return (
-        <header className={styles.header}>
-            <Link to="/" className={styles.siteName}>
-                AI Img Tools
-            </Link>
-            <div className={styles.rightLinks}>
-                <NavLink to="/" className={styles.navLink}>
-                    Upscale
-                </NavLink>
-                <NavLink to="/bg-removal" className={styles.navLink}>
-                    Remove Background
-                </NavLink>
-                <a href="/editor.html" className={styles.navLink}>
-                    Photo Editor
-                </a>
+        <div id="palleon-top-bar">
+            {/* Logo */}
+            <a className="palleon-logo" href="/">
+                AI Img Tools{" "}
+            </a>
+            {/* Top Bar Menu */}
+            <div className="palleon-top-bar-menu">
+                {/* History */}
+                <div className="palleon-undo">
+                    <button
+                        id="palleon-undo"
+                        type="button"
+                        className="palleon-btn-simple tooltip"
+                        data-title="Undo"
+                        // autoComplete="off"
+                        disabled={undefined}
+                    >
+                        <span className="material-icons">undo</span>
+                    </button>
+                </div>
+                <div className="palleon-redo">
+                    <button
+                        id="palleon-redo"
+                        type="button"
+                        className="palleon-btn-simple tooltip"
+                        data-title="Redo"
+                        // autoComplete="off"
+                        disabled={undefined}
+                    >
+                        <span className="material-icons">redo</span>
+                    </button>
+                </div>
+                <div className="palleon-history">
+                    <button
+                        id="palleon-history"
+                        type="button"
+                        className="palleon-btn-simple palleon-modal-open tooltip"
+                        data-title="History"
+                        // autoComplete="off"
+                        data-target="#modal-history"
+                        disabled={undefined}
+                    >
+                        <span className="material-icons">history</span>
+                    </button>
+                </div>
+                {/* New */}
+                <div className="palleon-new">
+                    <button
+                        id="palleon-new"
+                        type="button"
+                        className="palleon-btn primary palleon-modal-open"
+                        // autoComplete="off"
+                        data-target="#modal-add-new"
+                    >
+                        <span className="material-icons">add_circle</span>
+                        <span className="palleon-btn-text">New</span>
+                    </button>
+                </div>
+                {/* Save */}
+                <div className="palleon-save">
+                    <button
+                        id="palleon-save"
+                        type="button"
+                        className="palleon-btn primary palleon-modal-open"
+                        // autoComplete="off"
+                        data-target="#modal-save"
+                        disabled={undefined}
+                    >
+                        <span className="material-icons">save</span>
+                        <span className="palleon-btn-text">
+                            Save or Download
+                        </span>
+                    </button>
+                </div>
+                {/* User Menu */}
                 {authState.authenticated ? (
                     <Link to="/account">
                         <MdAccountCircle size={40} />
@@ -103,8 +164,60 @@ const Header = () => {
                         Login/Signup
                     </button>
                 )}
+                {/* <div className="palleon-user-menu">
+                    <div
+                        id="palleon-user-menu"
+                        className="palleon-dropdown-wrap"
+                    >
+                        <img alt="avatar" src="assets/avatar.png" />
+                        <span className="material-icons">arrow_drop_down</span>
+                        <div className="menu-menu-container">
+                            <ul
+                                id="palleon-be-menu"
+                                className="palleon-dropdown"
+                            >
+                                <li>
+                                    <a href="https://palleon.website/js-version/">
+                                        Profile
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> */}
             </div>
-        </header>
+        </div>
     );
 };
 export default Header;
+
+//? OLD CODE
+// {/* <header className={styles.header}>
+//     <Link to="/" className={styles.siteName}>
+//         AI Img Tools
+//     </Link>
+//     <div className={styles.rightLinks}>
+//         <NavLink to="/" className={styles.navLink}>
+//             Upscale
+//         </NavLink>
+//         <NavLink to="/bg-removal" className={styles.navLink}>
+//             Remove Background
+//         </NavLink>
+//         <a href="/editor.html" className={styles.navLink}>
+//             Photo Editor
+//         </a>
+//         {authState.authenticated ? (
+//             <Link to="/account">
+//                 <MdAccountCircle size={40} />
+//             </Link>
+//         ) : (
+//             <button
+//                 id="loginBtn"
+//                 className={styles.loginBtn}
+//                 onClick={signInWithGoogle}
+//             >
+//                 Login/Signup
+//             </button>
+//         )}
+//     </div>
+// </header> */}
