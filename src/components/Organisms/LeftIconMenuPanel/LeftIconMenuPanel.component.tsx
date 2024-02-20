@@ -226,7 +226,7 @@ const LeftIconMenuPanel = () => {
                                 </div>
                             </li>
                         </ul>
-                        <AISection />
+                        {/* <AISection /> */}
                         <hr className="hide-on-canvas-mode" />
                         <ul className="palleon-accordion hide-on-canvas-mode">
                             {/* Quick Filters */}

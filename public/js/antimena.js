@@ -12,8 +12,10 @@ function antimena(selector, canvas, lazyLoadInstance) {
 
     var usePHP = false; // If false, you can add your API keys directly into the following variables but this is not recommended. You should store your API keys on the server side to prevent them from being stolen. "getApiKeys()" function will make a request to the "get_api_keys.php" file. The PHP function will only respond if the request comes from the same domain. You can add your API keys by editing the PHP file.
     var openaiApiKey = "";
-    var stabilityaiApiKey = "";
-    var clipdropApiKey = "";
+    var stabilityaiApiKey =
+        "";
+    var clipdropApiKey =
+        "";
 
     /* Choose OpenAI Model */
 
@@ -1910,95 +1912,9 @@ function antimena(selector, canvas, lazyLoadInstance) {
             .find("li")
             .on("click", "a", function (e) {
                 e.preventDefault();
-                var parent = $(this).parent();
-                if ($(this).parent().hasClass("opened")) {
-                    parent.find("li").removeClass("opened");
-                } else {
-                    parent.find("li").removeClass("opened");
-                    $(this).parent().addClass("opened");
-                }
-            });
-
-        // Range Slider
-        selector
-            .find("#modal-ai-image")
-            .on("input", ".palleon-slider", function () {
-                var wrapper = $(this).parent().parent();
-                wrapper.find(".slider-label span").html($(this).val());
-                selector.find("span.tm-count-zoom").html($(this).val());
-            });
-        selector
-            .find("#antimena-adjust-accordion")
-            .on("input", ".palleon-slider", function () {
-                var wrapper = $(this).parent().parent();
-                wrapper.find(".slider-label span").html($(this).val());
-                selector.find("span.tm-count-zoom").html($(this).val());
-            });
-
-        // Check stability.ai balance on first load
-        if (stabilityaiApiKey != "") {
-            selector.find("#sai-balance-check").trigger("click");
-        }
-
-        // Sketch to image canvas
-        selector.find("#sketch-to-image-link").one("click", function (e) {
-            setTimeout(function () {
-                sketchCanvas = new fabric.Canvas(
-                    selector.find("#sketch-to-image-canvas")[0]
-                );
-                sketchCanvas.isDrawingMode = true;
-                var pencilBrush = new fabric.PencilBrush(sketchCanvas);
-                sketchCanvas.freeDrawingBrush = pencilBrush;
-                sketchCanvas.freeDrawingBrush.color = selector
-                    .find("#sketch-to-image-brush-color")
-                    .val();
-                sketchCanvas.freeDrawingBrush.width = parseInt(
-                    selector.find("#sketch-to-image-brush-width").val()
-                );
-                sketchCanvas.setWidth(640);
-                sketchCanvas.setHeight(640);
-                sketchAdjustZoom();
-                $("#sketch-to-image-wrap").css("opacity", 1);
-            }, 500);
-        });
-
-        // Image Brush Colorpicker
-        selector.find("#sketch-to-image-brush-color").spectrum({
-            allowEmpty: false,
-            showInitial: true,
-            hideAfterPaletteSelect: true,
-        });
-
-        // Populate size select
-        var saiImgSizes = [
-            { value: "896x512", text: "7:4 (896x512px)" },
-            { value: "768x512", text: "3:2 (768x512px)" },
-            { value: "683x512", text: "4:3 (683x512px)" },
-            { value: "640x512", text: "5:4 (640x512px)" },
-            { value: "512x512", text: "1:1 (512x512px)" },
-            { value: "512x640", text: "4:5 (512x640px)" },
-            { value: "512x683", text: "3:4 (512x683px)" },
-            { value: "512x768", text: "2:3 (512x768px)" },
-            { value: "512x896", text: "4:7 (512x896px)" },
-        ];
-        if (saiEngine.includes("stable-diffusion-xl")) {
-            saiImgSizes = [
-                { value: "1536x640", text: "1536x640px" },
-                { value: "1344x768", text: "1344x768px" },
-                { value: "1216x832", text: "1216x832px" },
-                { value: "1152x896", text: "152x896px" },
-                { value: "1024x1024", text: "1024x1024px" },
-                { value: "896x1152", text: "896x1152px" },
-                { value: "832x1216", text: "832x1216px" },
-                { value: "768x1344", text: "768x1344px" },
-                { value: "640x1536", text: "640x1536px" },
-            ];
-        }
-        $.each(saiImgSizes, function (i, data) {
-            if (data.value == "512x512" || data.value == "1024x1024") {
-                $("#sai-size").append(
-                    '<option value="' +
-                        data.value +
+                var parent = $(this).parent().parent();
+).parent();
+                 data.value +
                         '" selected>' +
                         data.text +
                         "</option>"
@@ -2134,19 +2050,19 @@ function antimena(selector, canvas, lazyLoadInstance) {
         //     );
         // if (clipdropApiKey != "") {
         //     var clipdropContent =
-        //         '<li id="antimena-clipdrop-remove-background" class="hide-on-canvas-mode"> <a href="#"><span class="material-icons accordion-icon">landscape</span>Remove BG<span class="data-count">clipdrop</span><span class="material-icons arrow">keyboard_arrow_down</span></a> <div> <div class="palleon-control-desc"> Layers will not be pushed to the API. Only the background image will be affected. </div> <button id="clipdrop-remove-background" type="button" class="palleon-btn primary palleon-lg-btn btn-full" autocomplete="off"><span class="material-icons arrow">landscape</span>Remove Background</button> </div> </li> <li id="antimena-clipdrop-replace-background" class="hide-on-canvas-mode"> <a href="#"><span class="material-icons accordion-icon">landscape</span>Replace BG<span class="data-count">clipdrop</span><span class="material-icons arrow">keyboard_arrow_down</span></a> <div> <div class="palleon-control-desc"> Layers will not be pushed to the API. Only the background image will be affected. </div> <div class="palleon-control-wrap label-block"> <label class="palleon-control-label">Prompt (Required)</label> <div class="palleon-control"> <textarea id="clipdrop-replace-bg-prompt" class="palleon-form-field" rows="2" autocomplete="off" maxlength="2000"></textarea> </div> </div> <div class="palleon-control-desc antimena-desc"> Describe the scene you want to teleport your item to. </div> <button id="clipdrop-replace-background" type="button" class="palleon-btn primary palleon-lg-btn btn-full" autocomplete="off" disabled><span class="material-icons arrow">landscape</span>Replace Background</button> </div> </li> <li id="antimena-clipdrop-inpainting" class="hide-on-canvas-mode"> <a href="#"><span class="material-icons accordion-icon">landscape</span>Cleanup<span class="data-count">clipdrop</span><span class="material-icons arrow">keyboard_arrow_down</span></a> <div> <div class="palleon-control-desc"> Mark unwanted objects or defects using the "pencil brush" and click the button to remove them from the image. You can use any brush color. </div> <button id="clipdrop-inpainting" type="button" class="palleon-btn primary palleon-lg-btn btn-full" autocomplete="off"><span class="material-icons arrow">landscape</span>Cleanup</button> </div> </li> <li id="antimena-clipdrop-remove-text" class="hide-on-canvas-mode"> <a href="#"><span class="material-icons accordion-icon">landscape</span>Remove Text<span class="data-count">clipdrop</span><span class="material-icons arrow">keyboard_arrow_down</span></a> <div> <div class="palleon-control-desc"> Layers will not be pushed to the API. Only the background image will be affected. </div> <button id="clipdrop-remove-text" type="button" class="palleon-btn primary palleon-lg-btn btn-full" autocomplete="off"><span class="material-icons arrow">landscape</span>Remove Text</button> </div> </li> <li id="antimena-clipdrop-upscaler"> <a href="#"><span class="material-icons accordion-icon">landscape</span>Upscaler<span class="data-count">clipdrop</span><span class="material-icons arrow">keyboard_arrow_down</span></a> <div> <div class="palleon-control-wrap"> <label class="palleon-control-label">Width</label> <div class="palleon-control"> <input id="clipdrop-upscale-width" class="palleon-form-field" type="number" value="" autocomplete="off" data-size=""> </div> </div> <div class="palleon-control-wrap"> <label class="palleon-control-label">Height</label> <div class="palleon-control"> <input id="clipdrop-upscale-height" class="palleon-form-field" type="number" value="" autocomplete="off" data-size=""> </div> </div> <button id="clipdrop-upscale" type="button" class="palleon-btn primary palleon-lg-btn btn-full" autocomplete="off"><span class="material-icons arrow">landscape</span>Upscale Image</button> </div> </li> <li id="antimena-clipdrop-reimagine"> <a href="#"><span class="material-icons accordion-icon">landscape</span>Reimagine<span class="data-count">clipdrop</span><span class="material-icons arrow">keyboard_arrow_down</span></a> <div> <button id="clipdrop-clipdrop-reimagine" type="button" class="palleon-btn primary palleon-lg-btn btn-full" autocomplete="off"><span class="material-icons arrow">landscape</span>Reimagine</button> </div> </li>';
+        //         '<li id="antimena-clipdrop-remove-background" class="hide-on-canvas-mode"> <a href="#"><span class="material-icons accordion-icon">landscape</span>Remove BG<span class="data-count">clipdrop</span><span class="material-icons arrow">keyboard_arrow_down</span></a> <div> <div class="palleon-control-desc"> Layers will not be pushed to the API. Only the background image will be affected. </div> <button id="clipdrop-remove-background" type="button" class="palleon-btn primary palleon-lg-btn btn-full" autocomplete="off"><span class="material-icons arrow">landscape</span>Remove Background</button> </div> </li> <li id="antimena-clipdrop-replace-background" class="hide-on-canvas-mode"> <a href="#"><span class="material-icons accordion-icon">landscape</span>Replace BG<span class="data-count">clipdrop</span><span class="material-icons arrow">keyboard_arrow_down</span></a> <div> <div class="palleon-control-desc"> Layers will not be pushed to the API. Only the background image will be affected. </div> <div class="palleon-control-wrap label-block"> <label class="palleon-control-label">Prompt (Required)</label> <div class="palleon-control"> <textarea id="clipdrop-replace-bg-prompt" class="palleon-form-field" rows="2" autocomplete="off" maxlength="2000"></textarea> </div> </div> <div class="palleon-control-desc antimena-desc"> Describe the scene you want to teleport your item to. </div> <button id="clipdrop-replace-background" type="button" class="palleon-btn primary palleon-lg-btn btn-full" autocomplete="off" disabled><span class="material-icons arrow">landscape</span>Replace Background</butto// </div> </li> <li // "antimena-clipdrop-inpainting" class="hide-on-canvas-mode"// a href="#"><span cla// "material-icons accordion-icon">landscape</span>Cleanup<span class="data-count">clipdrop<// an><span class=// terial-icons arrow">keyboard_arrow_d// </span></a> <div> <div class="pall// -control-desc"> Mark unwanted objects or defects using the "pencil brush" and click the button to remove them from the image. You can use any brush color. </div> <button id="clipdrop-inpainting" type="button" class="palleon-btn primary palleon-lg-btn btn-full" autocomplete="off"><span class="material-icons arrow">landscape</span>Cleanup</button> </div> </li> <li id="antimena-clipdrop-remove-text" class="hide-on-canvas-mode"> <a href="#"><span class="material-icons accordion-icon">landscape</span>Remove Text<span class="data-count">clipdrop</span><span class="material-icons arrow">keyboard_arrow_down</span></a> <div> <div class="palleon-control-desc"> Layers will not be pushed to the API. Only the background image will be affected. </div> <button id="clipdrop-remove-text" type="button" class="palleon-btn primary palleon-lg-btn btn-full" autocomplete="off"><span class="material-icons arrow">landscape</span>Remove Text</button> </div> </li> <li id="antimena-clipdrop-upscaler"> <a href="#"><span class="material-icons accordion-icon">landscape</span>Upscaler<span class="data-count">clipdrop</span><span class="material-icons arrow">keyboard_arrow_down</span></a> <div> <div class="palleon-control-wrap"> <label class="palleon-control-label">Width</label> <div class="palleon-control"> <input id="clipdrop-upscale-width" class="palleon-form-field" type="number" value="" autocomplete="off" data-size=""> </div> </div> <div class="palleon-control-wrap"> <label class="palleon-control-label">Height</label> <div class="palleon-control"> <input id="clipdrop-upscale-height" class="palleon-form-field" type="number" value="" autocomplete="off" data-size=""> </div> </div> <button id="clipdrop-upscale" type="button" class="palleon-btn primary palleon-lg-btn btn-full" autocomplete="off"><span class="material-icons arrow">landscape</span>Upscale Image</button> </div> </li> <li id="antimena-clipdrop-reimagine"> <a href="#"><span class="material-icons accordion-icon">landscape</span>Reimagine<span class="data-count">clipdrop</span><span class="material-icons arrow">keyboard_arrow_down</span></a> <div> <button id="clipdrop-clipdrop-reimagine" type="button" class="palleon-btn primary palleon-lg-btn btn-full" autocomplete="off"><span class="material-icons arrow">landscape</span>Reimagine</button> </div> </li>';
         //     selector
         //         .find("#antimena-adjust-accordion")
         //         .prepend(clipdropContent);
         // }
         // if (openaiApiKey != "") {
         //     var oaiContent =
-        //         '<li id="antimena-oai-edit"> <a href="#"><span class="material-icons accordion-icon">landscape</span>Image Edit<span class="data-count">OpenAI</span><span class="material-icons arrow">keyboard_arrow_down</span></a> <div> <div class="palleon-control-wrap label-block"> <label class="palleon-control-label">Image Size</label> <div class="palleon-control"> <select id="oai-edit-size" class="palleon-select" autocomplete="off"> <option value="1024x1024" selected>1024x1024 px</option> <option value="512x512">512x512 px</option> <option value="256x256">56x256 px</option> </select> </div> </div> <div class="palleon-control-wrap label-block"> <label class="palleon-control-label">Prompt (Required)</label> <div class="palleon-control"> <textarea id="oai-edit-prompt" class="palleon-form-field" rows="2" autocomplete="off" placeholder="Golden hour New York City skyline, iconic, dramatic" maxlength="1000"></textarea> </div> </div> <div class="palleon-control-desc"> The transparent areas of the image indicate where the image should be edited, and the prompt should describe the full new image, not just the transparent areas. You can use "Erase BG Image" brush to remove the pixels on the background image. </div> <button id="oai-edit" type="button" class="palleon-btn primary palleon-lg-btn btn-full" autocomplete="off" disabled><span class="material-icons arrow">landscape</span>Edit Image</button> </div> </li> <li id="antimena-oai-variation" class="hide-on-canvas-mode"> <a href="#"><span class="material-icons accordion-icon">landscape</span>Image Variation<span class="data-count">OpenAI</span><span class="material-icons arrow">keyboard_arrow_down</span></a> <div> <div class="palleon-control-desc"> Creates a variation of the background image. Layers will not be pushed to the API. Only the background image will be affected. </div> <button id="oai-variation" type="button" class="palleon-btn primary palleon-lg-btn btn-full" autocomplete="off"><span class="material-icons arrow">landscape</span>Generate</button> </div> </li>';
+        //         '<li id="antimena-oai-edit"> <a href="#"><span class="material-icons accordion-icon">landscape</span>Image Edit<span class="data-count">OpenAI</span><span class="material-icons arrow">keyboard_arrow_down</span></a> <div> <div class="palleon-control-wrap label-block"> <label class="palleon-control-label">Image Size</label> <div class="palleon-control"> <select id="oai-edit-size" class="palleon-select" autocomplete="off"> <option value="1024x1024" selected>1024x1024 px</option> <option value="512x512">512x512 px</option> <option value="256x256">56x256 px</option> </select> </div> </div> <div class="palleon-control-wrap label-block"> <label class="palleon-control-label">Prompt (Required)</label> <div class="palleon-control"> <textarea id="oai-edit-prompt" class="palleon-form-field" rows="2" autocomplete="off" placeholder="Golden hour New York City skyline, iconic, dramatic" maxlength="1000"></textarea> </div> </div> <div class="palleon-control-desc"> The transparent areas of the image indicate where the image should be edited, and the prompt should describe the full new image, not just the transparent areas. You can use "Erase BG Image" brush to remove the pixels on the background image. </div> <button id="oai-edit" type="button" class="palleon-btn primary palleon-lg-btn btn-full" autocomplete="off" disabled><span class="material-icons arrow">landscape</span>Edit Image</button> </div> </li> <li id="antimena-oai-variation" class="hide-on-canvas-mode"> <a href="#"><span class="material-icons accordion-icon">landscape</span>Image Variation<span class="data-count">OpenAI</span><span class="material-icons arrow">keyboard_arrow_down</span></a> <div> <div class="pall// -control-desc"> Creat// a variation of the background image. Layers will not//  pushed to the API. Only the background ima// will be af// ted. </div> <button id="oai-variat// " type="button" class="palleo// tn primary palleon-lg-btn btn-full" autocomplete="off"><span class="material-icons arrow">landscape</span>Generate</button> </div> </li>';
         //     selector.find("#antimena-adjust-accordion").prepend(oaiContent);
         // }
         // if (stabilityaiApiKey != "") {
         //     var saiContent =
-        //         '<li id="antimena-sai-regenerator"> <a href="#"><span class="material-icons accordion-icon">landscape</span>Regenerator<span class="data-count">stability.ai</span><span class="material-icons arrow">keyboard_arrow_down</span></a> <div> <div class="palleon-control-wrap label-block"> <label class="palleon-control-label">Prompt (Required)</label> <div class="palleon-control"> <textarea id="sai-imgtoimg-prompt" class="palleon-form-field" rows="2" autocomplete="off" placeholder="Golden hour New York City skyline, iconic, dramatic" maxlength="2000"></textarea> </div> </div> <div class="palleon-control-wrap label-block"> <label class="palleon-control-label">Negative Prompt</label> <div class="palleon-control"> <textarea id="sai-imgtoimg-negative-prompt" class="palleon-form-field" rows="2" autocomplete="off" placeholder="black and white, monochrome"></textarea> </div> </div> <div class="palleon-control-wrap label-block"> <label class="palleon-control-label">Style Preset</label> <div class="palleon-control"> <select id="sai-imgtoimg-style-presets" class="palleon-select" autocomplete="off"> <option value="" selected>Auto</option> <option value="3d-model">3d Model</option> <option value="analog-film">Analog Film</option> <option value="anime">Anime</option> <option value="cinematic">Cinematic</option> <option value="comic-book">Comic Book</option> <option value="digital-art">Digital Art</option> <option value="enhance">Enhance</option> <option value="fantasy-art">Fantasy Art</option> <option value="isometric">Isometric</option> <option value="line-art">Line Art</option> <option value="low-poly">Low Poly</option> <option value="modeling-compound">Modeling Compound</option> <option value="neon-punk">Neon Punk</option> <option value="origami">Origami</option> <option value="photographic">Photographic</option> <option value="pixel-art">Pixel Art</option> <option value="tile-texture">Tile Texture</option> </select> </div> </div> <div class="palleon-control-wrap label-block"> <label class="palleon-control-label">Seed (Optional)</label> <div class="palleon-control"> <input id="sai-imgtoimg-seed" class="palleon-form-field" type="number" value="" autocomplete="off"> </div> </div> <div class="palleon-control-wrap label-block"> <label class="palleon-control-label slider-label">Image Strength<span>0.35</span></label> <div class="palleon-control"> <input id="sai-imgtoimg-strength" type="range" min="0" max="1" value="0.35" step="0.05" class="palleon-slider" autocomplete="off"> </div> </div> <div class="palleon-control-desc antimena-desc"> How much influence the original image has on the diffusion process. Values close to 1 will yield images very similar to the original image while values close to 0 will yield images wildly different than the original image. </div> <div class="palleon-control-wrap label-block"> <label class="palleon-control-label slider-label">CFG Scale<span>7</span></label> <div class="palleon-control"> <input id="sai-imgtoimg-cfg" type="range" min="0" max="35" value="7" step="1" class="palleon-slider" autocomplete="off"> </div> </div> <div class="palleon-control-desc antimena-desc"> How strictly the diffusion process adheres to the prompt text (higher values keep your image closer to your prompt). </div> <div class="palleon-control-wrap label-block"> <label class="palleon-control-label slider-label">Steps<span>50</span></label> <div class="palleon-control"> <input id="sai-imgtoimg-steps" type="range" min="10" max="150" value="50" step="1" class="palleon-slider" autocomplete="off"> </div> </div> <div class="palleon-control-desc antimena-desc"> Number of diffusion steps to run. </div> <div class="palleon-control-wrap"> <label class="palleon-control-label">Alpha Mask</label> <div class="palleon-control palleon-toggle-control"> <label class="palleon-toggle"> <input id="sai-imgtoimg-mask" class="palleon-toggle-checkbox" type="checkbox" autocomplete="off" /> <div class="palleon-toggle-switch"></div> </label> </div> </div> <div class="palleon-control-desc antimena-desc"> If alpha mask is enabled, fully transparent pixels are replaced and fully opaque pixels are unchanged. You can use "Erase BG Image" brush to remove the pixels on the background image. </div> <button id="sai-imgtoimg-generate" type="button" class="palleon-btn primary palleon-lg-btn btn-full" autocomplete="off" disabled><span class="material-icons arrow">landscape</span>Generate</button> </div> </li> <li id="antimena-sai-upscaler"> <a href="#"><span class="material-icons accordion-icon">landscape</span>Upscaler<span class="data-count">stability.ai</span><span class="material-icons arrow">keyboard_arrow_down</span></a> <div> <div class="palleon-control-wrap"> <label class="palleon-control-label">Width</label> <div class="palleon-control"> <input id="sai-upscale-width" class="palleon-form-field" type="number" value="" autocomplete="off" data-size=""> </div> </div> <div class="palleon-control-wrap"> <label class="palleon-control-label">Height</label> <div class="palleon-control"> <input id="sai-upscale-height" class="palleon-form-field" type="number" value="" autocomplete="off" data-size=""> </div> </div> <button id="sai-upscale" type="button" class="palleon-btn primary palleon-lg-btn btn-full" autocomplete="off" disabled><span class="material-icons arrow">landscape</span>Upscale Image</button> </div> </li> ';
+        //         '<li id="antimena-sai-regenerator"> <a href="#"><span class="material-icons accordion-icon">landscape</span>Regenerator<span class="data-count">stability.ai</span><span class="material-icons arrow">keyboard_arrow_down</span></a> <div> <div class="palleon-control-wrap label-block"> <label class="palleon-control-label">Prompt (Required)</label> <div class="palleon-control"> <textarea id="sai-imgtoimg-prompt" class="palleon-form-field" rows="2" autocomplete="off" placeholder="Golden hour New York City skyline, iconic, dramatic" maxlength="2000"></textarea> </div> </div> <div class="palleon-control-wrap label-block"> <label class="palleon-control-label">Negative Prompt</label> <div class="palleon-control"> <textarea id="sai-imgtoimg-negative-prompt" class="palleon-form-field" rows="2" autocomplete="off" placeholder="black and white, monochrome"></textarea> </div> </div> <div class="palleon-control-wrap label-block"> <label class="palleon-control-label">Style Preset</label> <div class="palleon-control"> <select id="sai-imgtoimg-style-presets" class="palleon-select" autocomplete="off"> <option value="" selected>Auto</option> <option value="3d-model">3d Model</option> <option value="analog-film">Analog Film</option> <option value="anime">Anime</option> <option value="cinematic">Cinematic</option> <option value="comic-book">Comic Book</option> <option value="digital-art">Digital Art</option> <option value="enhance">Enhance</option> <option value="fantasy-art">Fantasy Art</option> <option value="isometric">Isometric</option> <option value="line-art">Line Art</option> <option value="low-poly">Low Poly</option> <option value="modeling-compound">Modeling Compound</option> <option value="neon-punk">Neon Punk<// tion> <option value="origami">Origami</option> <option value="photographic">P// ographic</// ion> <option value="pixel-art">Pixel Ar// option> <option value="tile-t// ure">Tile Texture</option> </select> </div> </div> <div class="palleon-control-wrap label-block"> <label class="palleon-control-label">Seed (Optional)</label> <div class="palleon-control"> <input id="sai-imgtoimg-seed" class="palleon-form-field" type="number" value="" autocomplete="off"> </div> </div> <div class="palleon-control-wrap label-block"> <label class="palleon-control-label slider-label">Image Strength<span>0.35</span></label> <div class="palleon-control"> <input id="sai-imgtoimg-strength" type="range" min="0" max="1" value="0.35" step="0.05" class="palleon-slider" autocomplete="off"> </div> </div> <div class="palleon-control-desc antimena-desc"> How much influence the original image has on the diffusion process. Values close to 1 will yield images very similar to the original image while values close to 0 will yield images wildly different than the original image. </div> <div class="palleon-control-wrap label-block"> <label class="palleon-control-label slider-label">CFG Scale<span>7</span></label> <div class="palleon-control"> <input id="sai-imgtoimg-cfg" type="range" min="0" max="35" value="7" step="1" class="palleon-slider" autocomplete="off"> </div> </div> <div class="palleon-control-desc antimena-desc"> How strictly the diffusion process adheres to the prompt text (higher values keep your image closer to your prompt). </div> <div class="palleon-control-wrap label-block"> <label class="palleon-control-label slider-label">Steps<span>50</span></label> <div class="palleon-control"> <input id="sai-imgtoimg-steps" type="range" min="10" max="150" value="50" step="1" class="palleon-slider" autocomplete="off"> </div> </div> <div class="palleon-control-desc antimena-desc"> Number of diffusion steps to run. </div> <div class="palleon-control-wrap"> <label class="palleon-control-label">Alpha Mask</label> <div class="palleon-control palleon-toggle-control"> <label class="palleon-toggle"> <input id="sai-imgtoimg-mask" class="palleon-toggle-checkbox" type="checkbox" autocomplete="off" /> <div class="palleon-toggle-switch"></div> </label> </div> </div> <div class="palleon-control-desc antimena-desc"> If alpha mask is enabled, fully transparent pixels are replaced and fully opaque pixels are unchanged. You can use "Erase BG Image" brush to remove the pixels on the background image. </div> <button id="sai-imgtoimg-generate" type="button" class="palleon-btn primary palleon-lg-btn btn-full" autocomplete="off" disabled><span class="material-icons arrow">landscape</span>Generate</button> </div> </li> <li id="antimena-sai-upscaler"> <a href="#"><span class="material-icons accordion-icon">landscape</span>Upscaler<span class="data-count">stability.ai</span><span class="material-icons arrow">keyboard_arrow_down</span></a> <div> <div class="palleon-control-wrap"> <label class="palleon-control-label">Width</label> <div class="palleon-control"> <input id="sai-upscale-width" class="palleon-form-field" type="number" value="" autocomplete="off" data-size=""> </div> </div> <div class="palleon-control-wrap"> <label class="palleon-control-label">Height</label> <div class="palleon-control"> <input id="sai-upscale-height" class="palleon-form-field" type="number" value="" autocomplete="off" data-size=""> </div> </div> <button id="sai-upscale" type="button" class="palleon-btn primary palleon-lg-btn btn-full" autocomplete="off" disabled><span class="material-icons arrow">landscape</span>Upscale Image</button> </div> </li> ';
         //     selector.find("#antimena-adjust-accordion").prepend(saiContent);
         // }
     }
@@ -2204,13 +2120,13 @@ function clipdropHandleErrors(response) {
         toastr.success(
             parseFloat(response.headers.get("x-remaining-credits")).toFixed(2) +
                 " credits left.",
-            palleonParams.success
+ //         palleonParams.success
         );
     }
     return response;
 }
 
-// OpenAI error handling
+// Ope//  error handling
 function oaiHandleErrors(response) {
     if (!response.ok) {
         if (response.status == 400) {
