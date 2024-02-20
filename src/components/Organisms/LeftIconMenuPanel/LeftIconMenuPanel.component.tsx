@@ -1,4 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
+
+import AISection from "./AISection/AISection.component";
+
 /* eslint-disable jsx-a11y/anchor-is-valid */
 const LeftIconMenuPanel = () => {
     return (
@@ -223,6 +226,7 @@ const LeftIconMenuPanel = () => {
                                 </div>
                             </li>
                         </ul>
+                        <AISection />
                         <hr className="hide-on-canvas-mode" />
                         <ul className="palleon-accordion hide-on-canvas-mode">
                             {/* Quick Filters */}

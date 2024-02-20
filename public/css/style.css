@@ -1474,6 +1474,10 @@ ul.palleon-accordion > li > a > .data-count {
     margin-right: 5px;
 }
 
+.data-premium {
+    background-image: var(--rtl-gradient) !important;
+}
+
 #palleon-frames ul.palleon-accordion > li > a > .arrow,
 #palleon-elements ul.palleon-accordion > li > a > .arrow {
     margin-left: 0;

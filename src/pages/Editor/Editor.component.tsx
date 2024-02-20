@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Header from "../../components/Header/header.component";
 import AddNewModal from "../../components/Organisms/AddNewModal/AddNewModal.component";
 import EditorBody from "../../components/Organisms/EditorBody/EditorBody.component";
@@ -11,6 +12,30 @@ import SaveModal from "../../components/Organisms/SaveModal/SaveModal.component"
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 const Editor = () => {
+    useEffect(() => {
+        // Function to dynamically load a script
+        const loadScript = (src: any) => {
+            const script = document.createElement("script");
+            script.src = src;
+            script.async = false; // This is required for synchronous JavaScript loading
+            document.body.appendChild(script);
+        };
+
+        // Load the scripts after the component mounts
+        loadScript("js/antimena.js");
+        loadScript("js/custom.js");
+
+        // Optional: Return a cleanup function to remove the scripts from your document when the component unmounts
+        return () => {
+            document
+                .querySelectorAll(
+                    'script[src^="js/antimena.js"], script[src^="js/custom.js"]'
+                )
+                .forEach((script) => {
+                    document.body.removeChild(script);
+                });
+        };
+    }, []);
     return (
         <>
             {/* Page Loader START */}
