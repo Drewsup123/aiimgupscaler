@@ -156,13 +156,28 @@ const Header = () => {
                         <MdAccountCircle size={40} />
                     </Link>
                 ) : (
-                    <button
-                        id="loginBtn"
-                        className={styles.loginBtn}
+                    <div
+                        className={styles.avatarNotSignedIn}
                         onClick={signInWithGoogle}
                     >
-                        Login/Signup
-                    </button>
+                        {/* <img
+                            src="https://static.gamersclub.com.br/players/avatar/737335/737335_full.jpg"
+                            alt="Usuário"
+                            className={styles.avatarImage}
+                        /> */}
+                        <MdAccountCircle
+                            size={40}
+                            color={"#5c5c5c"}
+                            className={styles.avatarImage}
+                        />
+                        <img
+                            src="https://i.imgur.com/0aDdQyR.png"
+                            alt="Moldura"
+                            className={
+                                styles.avatarFrame + " " + styles.animSpin
+                            }
+                        />
+                    </div>
                 )}
                 {/* <div className="palleon-user-menu">
                     <div
