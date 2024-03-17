@@ -1,3 +1,5 @@
+import UpgradeToPremiumButton from "../../Molecules/UpgradeToPremiumButton/UpgradeToPremiumButton.component";
+
 /* eslint-disable jsx-a11y/anchor-is-valid */
 const OAIContent = () => {
     return (
@@ -137,15 +139,19 @@ const OAIContent = () => {
                             </div>
                         </li>
                     </ul>
-                    <button
-                        id="oai-image-generate"
-                        type="button"
-                        className="palleon-btn primary palleon-lg-btn btn-full"
-                        disabled
-                    >
-                        <span className="material-icons arrow">landscape</span>
-                        Generate
-                    </button>
+                    <UpgradeToPremiumButton>
+                        <button
+                            id="oai-image-generate"
+                            type="button"
+                            className="palleon-btn primary palleon-lg-btn btn-full"
+                            disabled
+                        >
+                            <span className="material-icons arrow">
+                                landscape
+                            </span>
+                            Generate
+                        </button>
+                    </UpgradeToPremiumButton>
                 </div>
             </div>
         </div>

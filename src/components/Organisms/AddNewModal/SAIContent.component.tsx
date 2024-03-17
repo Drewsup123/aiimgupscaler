@@ -1,3 +1,5 @@
+import UpgradeToPremiumButton from "../../Molecules/UpgradeToPremiumButton/UpgradeToPremiumButton.component";
+
 /* eslint-disable jsx-a11y/anchor-is-valid */
 const SaiContent = () => {
     return (
@@ -196,23 +198,32 @@ const SaiContent = () => {
                             </div>
                         </li>
                     </ul>
-                    <button
-                        id="sai-image-generate"
-                        type="button"
-                        className="palleon-btn primary palleon-lg-btn btn-full"
-                        disabled
-                    >
-                        <span className="material-icons arrow">landscape</span>
-                        Generate
-                    </button>
-                    <div id="sai-balance-notice" className="notice notice-info">
-                        <span id="sai-balance"></span>
-                        <a href="#" id="sai-balance-check">
-                            <span className="material-icons arrow">
-                                refresh
-                            </span>
-                        </a>
-                    </div>
+                    <UpgradeToPremiumButton>
+                        <>
+                            <button
+                                id="sai-image-generate"
+                                type="button"
+                                className="palleon-btn primary palleon-lg-btn btn-full"
+                                disabled
+                            >
+                                <span className="material-icons arrow">
+                                    landscape
+                                </span>
+                                Generate
+                            </button>
+                            <div
+                                id="sai-balance-notice"
+                                className="notice notice-info"
+                            >
+                                <span id="sai-balance"></span>
+                                <a href="#" id="sai-balance-check">
+                                    <span className="material-icons arrow">
+                                        refresh
+                                    </span>
+                                </a>
+                            </div>
+                        </>
+                    </UpgradeToPremiumButton>
                 </div>
             </div>
         </div>

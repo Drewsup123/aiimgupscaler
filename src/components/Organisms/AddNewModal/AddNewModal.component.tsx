@@ -1,3 +1,4 @@
+import UpgradeToPremiumButton from "../../Molecules/UpgradeToPremiumButton/UpgradeToPremiumButton.component";
 import AIImageTab from "./AIImageTab.component";
 import BlankCanvasTab from "./BlankCanvasTab.component";
 import NewImageTab from "./NewImageTab.component";

@@ -1,6 +1,12 @@
+import useAuth from "../../../../hooks/useAuth";
+import usePremiumStatus from "../../../../hooks/usePremiumStatus";
+import UpgradeToPremiumButton from "../../../Molecules/UpgradeToPremiumButton/UpgradeToPremiumButton.component";
 import ClipDropOptions from "./ClipDropOptions.component";
 
 const AISection = () => {
+    const { authState } = useAuth();
+    const isPremium = usePremiumStatus();
+
     return (
         <>
             <hr />
@@ -25,16 +31,18 @@ const AISection = () => {
                             Layers will not be pushed to the API. Only the
                             background image will be affected.
                         </div>
-                        <button
-                            id="clipdrop-remove-background"
-                            type="button"
-                            className="palleon-btn primary palleon-lg-btn btn-full"
-                        >
-                            <span className="material-icons arrow">
-                                landscape
-                            </span>
-                            Remove Background
-                        </button>
+                        <UpgradeToPremiumButton>
+                            <button
+                                id="clipdrop-remove-background"
+                                type="button"
+                                className="palleon-btn primary palleon-lg-btn btn-full"
+                            >
+                                <span className="material-icons arrow">
+                                    landscape
+                                </span>
+                                Remove Background
+                            </button>
+                        </UpgradeToPremiumButton>
                     </div>
                 </li>
 
@@ -75,18 +83,20 @@ const AISection = () => {
                             Describe the scene you want to teleport your item
                             to.
                         </div>
-                        <button
-                            id="clipdrop-replace-background"
-                            type="button"
-                            className="palleon-btn primary palleon-lg-btn btn-full"
-                            // autoComplete="off"
-                            disabled
-                        >
-                            <span className="material-icons arrow">
-                                landscape
-                            </span>
-                            Replace Background
-                        </button>
+                        <UpgradeToPremiumButton style={{ marginTop: 20 }}>
+                            <button
+                                id="clipdrop-replace-background"
+                                type="button"
+                                className="palleon-btn primary palleon-lg-btn btn-full"
+                                // autoComplete="off"
+                                disabled
+                            >
+                                <span className="material-icons arrow">
+                                    landscape
+                                </span>
+                                Replace Background
+                            </button>
+                        </UpgradeToPremiumButton>
                     </div>
                 </li>
 
@@ -110,16 +120,18 @@ const AISection = () => {
                             brush" and click the button to remove them from the
                             image. You can use any brush color.
                         </div>
-                        <button
-                            id="clipdrop-inpainting"
-                            type="button"
-                            className="palleon-btn primary palleon-lg-btn btn-full"
-                        >
-                            <span className="material-icons arrow">
-                                landscape
-                            </span>
-                            Cleanup
-                        </button>
+                        <UpgradeToPremiumButton>
+                            <button
+                                id="clipdrop-inpainting"
+                                type="button"
+                                className="palleon-btn primary palleon-lg-btn btn-full"
+                            >
+                                <span className="material-icons arrow">
+                                    landscape
+                                </span>
+                                Cleanup
+                            </button>
+                        </UpgradeToPremiumButton>
                     </div>
                 </li>
 
@@ -142,16 +154,18 @@ const AISection = () => {
                             Layers will not be pushed to the API. Only the
                             background image will be affected.
                         </div>
-                        <button
-                            id="clipdrop-remove-text"
-                            type="button"
-                            className="palleon-btn primary palleon-lg-btn btn-full"
-                        >
-                            <span className="material-icons arrow">
-                                landscape
-                            </span>
-                            Remove Text
-                        </button>
+                        <UpgradeToPremiumButton>
+                            <button
+                                id="clipdrop-remove-text"
+                                type="button"
+                                className="palleon-btn primary palleon-lg-btn btn-full"
+                            >
+                                <span className="material-icons arrow">
+                                    landscape
+                                </span>
+                                Remove Text
+                            </button>
+                        </UpgradeToPremiumButton>
                     </div>
                 </li>
 
@@ -197,16 +211,18 @@ const AISection = () => {
                                 />
                             </div>
                         </div>
-                        <button
-                            id="clipdrop-upscale"
-                            type="button"
-                            className="palleon-btn primary palleon-lg-btn btn-full"
-                        >
-                            <span className="material-icons arrow">
-                                landscape
-                            </span>
-                            Upscale Image
-                        </button>
+                        <UpgradeToPremiumButton style={{ marginTop: 20 }}>
+                            <button
+                                id="clipdrop-upscale"
+                                type="button"
+                                className="palleon-btn primary palleon-lg-btn btn-full"
+                            >
+                                <span className="material-icons arrow">
+                                    landscape
+                                </span>
+                                Upscale Image
+                            </button>
+                        </UpgradeToPremiumButton>
                     </div>
                 </li>
 
@@ -222,16 +238,18 @@ const AISection = () => {
                         </span>
                     </a>
                     <div>
-                        <button
-                            id="clipdrop-clipdrop-reimagine"
-                            type="button"
-                            className="palleon-btn primary palleon-lg-btn btn-full"
-                        >
-                            <span className="material-icons arrow">
-                                landscape
-                            </span>
-                            Reimagine
-                        </button>
+                        <UpgradeToPremiumButton>
+                            <button
+                                id="clipdrop-clipdrop-reimagine"
+                                type="button"
+                                className="palleon-btn primary palleon-lg-btn btn-full"
+                            >
+                                <span className="material-icons arrow">
+                                    landscape
+                                </span>
+                                Reimagine
+                            </button>
+                        </UpgradeToPremiumButton>
                     </div>
                 </li>
             </ul>

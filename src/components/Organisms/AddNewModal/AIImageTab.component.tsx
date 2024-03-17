@@ -1,8 +1,12 @@
+import usePremiumStatus from "../../../hooks/usePremiumStatus";
+import UpgradeToPremiumButton from "../../Molecules/UpgradeToPremiumButton/UpgradeToPremiumButton.component";
 import ClipdropContent from "./ClipDropTab.component";
 import OAIContent from "./OAIContent.component";
 import SaiContent from "./SAIContent.component";
 
 const AIImageTab = () => {
+    const isPremium = usePremiumStatus();
+
     return (
         <div id="modal-ai-image" className="palleon-tab palleon-modal-bg">
             <div className="palleon-tabs">
@@ -13,8 +17,20 @@ const AIImageTab = () => {
                     <li
                         id="sketch-to-image-link"
                         data-target="#clipdrop-sketch-to-image-tab"
+                        style={{
+                            pointerEvents: isPremium ? "all" : "none",
+                        }}
                     >
                         Sketch To Image
+                    </li>
+                    <li>
+                        <UpgradeToPremiumButton
+                            label="Upgrade to get unlimited access!"
+                            style={{
+                                whiteSpace: "nowrap",
+                                width: "100%",
+                            }}
+                        />
                     </li>
                 </ul>
                 <ClipdropContent />
