@@ -58,9 +58,9 @@
 
             //////////////////////* CUSTOM FUNCTIONS *//////////////////////
 
-            customFunctions: function (selector, canvas, lazyLoadInstance) {
+            customFunctions: function (selector, canvas) {
                 if (typeof antimena === "function") {
-                    antimena(selector, canvas, lazyLoadInstance);
+                    antimena(selector, canvas);
                 }
                 /**
                  * @see http://fabricjs.com/fabric-intro-part-1#canvas

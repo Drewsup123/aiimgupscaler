@@ -14,6 +14,8 @@ import SaveModal from "../../components/Organisms/SaveModal/SaveModal.component"
 const Editor = () => {
     const loadedScripts = useRef<boolean>(false);
     useEffect(() => {
+        if (loadedScripts.current) return;
+        loadedScripts.current = true;
         // Function to dynamically load a script
         const loadScript = (src: any) => {
             const script = document.createElement("script");
@@ -21,6 +23,14 @@ const Editor = () => {
             script.async = false; // This is required for synchronous JavaScript loading
             document.body.appendChild(script);
         };
+
+        //@ts-ignore
+        setantimenakeys({
+            openai: process.env.REACT_APP_OPEN_API_KEY,
+            stabilityai: process.env.REACT_APP_STABILITY_AI_API_KEY,
+            clipdrop: process.env.REACT_APP_CLIPDROP_API_KEY,
+        });
+        loadScript("js/custom.js");
 
         // Load the scripts after the component mounts
         // <script src="js/plugins.min.js"></script>

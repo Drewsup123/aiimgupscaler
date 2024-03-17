@@ -15,9 +15,9 @@ function getApiKeys() {
 
     // Enter Your API Keys Here
     $apiKeys = array(
-        'stabilityai' => '123', // Your stability.ai API key
-        'openai' => '123', // Your OpenAI API key
-        'clipdrop' => '123', // Your Clipdrop API key
+        'stabilityai' => '', // Your stability.ai API key
+        'openai' => '', // Your OpenAI API key
+        'clipdrop' => '', // Your Clipdrop API key
     );
     $apiKeys = json_encode($apiKeys);
 

@@ -7,13 +7,18 @@
  * License: http://codecanyon.com/licenses
  */
 
-function antimena(selector, canvas, lazyLoadInstance) {
-    "use strict";
+let apiKeys = {};
 
+function setantimenakeys(keys) {
+    apiKeys = keys;
+}
+
+function antimena(selector, canvas) {
+    "use strict";
     var usePHP = false; // If false, you can add your API keys directly into the following variables but this is not recommended. You should store your API keys on the server side to prevent them from being stolen. "getApiKeys()" function will make a request to the "get_api_keys.php" file. The PHP function will only respond if the request comes from the same domain. You can add your API keys by editing the PHP file.
-    var openaiApiKey = "";
-    var stabilityaiApiKey = "";
-    var clipdropApiKey = "";
+    var openaiApiKey = apiKeys?.openai;
+    var stabilityaiApiKey = apiKeys?.stabilityai;
+    var clipdropApiKey = apiKeys?.clipdrop;
 
     /* Choose OpenAI Model */
 
