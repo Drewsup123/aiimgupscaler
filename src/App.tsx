@@ -10,6 +10,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy.page";
 import Editor from "./pages/Editor/Editor.component";
 import useAuth from "./hooks/useAuth";
 import LoginDialog from "./components/Organisms/LoginDialog/LoginDialog.component";
+import UpgradeDialog from "./components/Organisms/UpgradeDialog/UpgradeDialog.component";
 
 function App() {
     const { authState } = useAuth();
@@ -41,6 +42,7 @@ function App() {
                 <Route path="/account" Component={AccountPage} />
             </Routes>
             <LoginDialog />
+            <UpgradeDialog />
             <Footer />
         </div>
     );

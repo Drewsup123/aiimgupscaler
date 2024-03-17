@@ -5,11 +5,13 @@ import { createCheckoutSession } from "../../../stripe/createCheckoutSession";
 import styles from "./UpgradeToPremiumButton.module.sass";
 import { PulseLoader } from "react-spinners";
 import { UPDATE_AUTH } from "../../../contexts/reducers/auth.reducer";
+import UpgradeDialog from "../../Organisms/UpgradeDialog/UpgradeDialog.component";
 
 interface IProps {
     children?: any;
     label?: string;
     style?: any;
+    triggerCheckoutSession?: boolean;
 }
 
 const UpgradeToPremiumButton = (props: IProps) => {
@@ -25,9 +27,13 @@ const UpgradeToPremiumButton = (props: IProps) => {
             return;
         }
         if (!authState.user?.uid) return;
-        setIsCreatingSession(true);
-        await createCheckoutSession(authState.user?.uid);
-        setIsCreatingSession(false);
+        if (!!props.triggerCheckoutSession) {
+            setIsCreatingSession(true);
+            await createCheckoutSession(authState.user?.uid);
+            setIsCreatingSession(false);
+        } else {
+            updateAuthState(UPDATE_AUTH, { showUpgradeModal: true });
+        }
     };
     if (isPremium) return props.children || null;
     return (
@@ -42,7 +48,7 @@ const UpgradeToPremiumButton = (props: IProps) => {
                 {isCreatingSession ? (
                     <>
                         <PulseLoader color="#fff" size={10} />
-                        Initiating Checkout 😃
+                        Initiating Checkout
                     </>
                 ) : (
                     props.label || "Upgrade to Premium"

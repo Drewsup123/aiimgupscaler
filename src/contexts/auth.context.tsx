@@ -17,6 +17,7 @@ export interface IAuth {
     user?: any;
     token?: string | null;
     showLoginModal?: boolean;
+    showUpgradeModal?: boolean;
 }
 
 const AuthContext = React.createContext<IAuthContext>({
