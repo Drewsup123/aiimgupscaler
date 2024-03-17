@@ -236,32 +236,3 @@ body {
         opacity: 1;
     }
 }
-
-.comingSoon-wrapper {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-    animation: fadeIn 1000ms ease;
-    -webkit-animation: fadeIn 1000ms ease;
-}
-
-.comingSoon-wrapper h1 {
-    font-size: 50px;
-    font-family: "Poppins", sans-serif;
-    margin-bottom: 0;
-    line-height: 1;
-    font-weight: 700;
-}
-
-.comingSoon-wrapper .comingSoon-dot {
-    color: #4febfe;
-}
-
-.comingSoon-wrapper p {
-    text-align: center;
-    margin: 18px;
-    font-family: "Muli", sans-serif;
-    font-weight: normal;
-}
