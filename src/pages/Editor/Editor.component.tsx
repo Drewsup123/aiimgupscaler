@@ -14,7 +14,8 @@ import SaveModal from "../../components/Organisms/SaveModal/SaveModal.component"
 const Editor = () => {
     const loadedScripts = useRef<boolean>(false);
     useEffect(() => {
-        if (loadedScripts.current) return;
+        //@ts-ignore
+        if (loadedScripts.current || setantimenakeys !== undefined) return;
         loadedScripts.current = true;
         // Function to dynamically load a script
         const loadScript = (src: any) => {
@@ -25,7 +26,7 @@ const Editor = () => {
         };
 
         //@ts-ignore
-        setantimenakeys({
+        setantimenakeys?.({
             openai: process.env.REACT_APP_OPEN_API_KEY,
             stabilityai: process.env.REACT_APP_STABILITY_AI_API_KEY,
             clipdrop: process.env.REACT_APP_CLIPDROP_API_KEY,
