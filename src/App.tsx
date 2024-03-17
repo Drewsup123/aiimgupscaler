@@ -8,8 +8,12 @@ import InPaintingPage from "./pages/Inpainting/inpainting.page";
 import Footer from "./components/Global/Footer/Footer.component";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy.page";
 import Editor from "./pages/Editor/Editor.component";
+import useAuth from "./hooks/useAuth";
+import LoginDialog from "./components/Organisms/LoginDialog/LoginDialog.component";
 
 function App() {
+    const { authState } = useAuth();
+
     return (
         <div className="App">
             <Header />
@@ -36,6 +40,7 @@ function App() {
                 <Route path="/inpainting" Component={InPaintingPage} />
                 <Route path="/account" Component={AccountPage} />
             </Routes>
+            <LoginDialog />
             <Footer />
         </div>
     );

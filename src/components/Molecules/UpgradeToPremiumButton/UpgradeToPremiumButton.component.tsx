@@ -4,6 +4,7 @@ import usePremiumStatus from "../../../hooks/usePremiumStatus";
 import { createCheckoutSession } from "../../../stripe/createCheckoutSession";
 import styles from "./UpgradeToPremiumButton.module.sass";
 import { PulseLoader } from "react-spinners";
+import { UPDATE_AUTH } from "../../../contexts/reducers/auth.reducer";
 
 interface IProps {
     children?: any;
@@ -13,14 +14,14 @@ interface IProps {
 
 const UpgradeToPremiumButton = (props: IProps) => {
     const [isCreatingSession, setIsCreatingSession] = useState(false);
-    const { authState } = useAuth();
+    const { authState, updateAuthState } = useAuth();
     const isPremium = usePremiumStatus();
 
     const handleClick = async (e: any) => {
         e.preventDefault();
         e.stopPropagation();
         if (!authState.authenticated) {
-            alert("Please login");
+            updateAuthState(UPDATE_AUTH, { showLoginModal: true });
             return;
         }
         if (!authState.user?.uid) return;
@@ -30,22 +31,24 @@ const UpgradeToPremiumButton = (props: IProps) => {
     };
     if (isPremium) return props.children || null;
     return (
-        <button
-            className={`${styles.glowOnHover} ${
-                isCreatingSession ? styles.glowLoading : ""
-            }`}
-            onClick={handleClick}
-            style={props.style || {}}
-        >
-            {isCreatingSession ? (
-                <>
-                    <PulseLoader color="#fff" size={10} />
-                    Initiating Checkout 😃
-                </>
-            ) : (
-                props.label || "Upgrade to Premium"
-            )}
-        </button>
+        <>
+            <button
+                className={`${styles.glowOnHover} ${
+                    isCreatingSession ? styles.glowLoading : ""
+                }`}
+                onClick={handleClick}
+                style={props.style || {}}
+            >
+                {isCreatingSession ? (
+                    <>
+                        <PulseLoader color="#fff" size={10} />
+                        Initiating Checkout 😃
+                    </>
+                ) : (
+                    props.label || "Upgrade to Premium"
+                )}
+            </button>
+        </>
     );
 };
 

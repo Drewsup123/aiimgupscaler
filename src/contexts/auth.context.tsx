@@ -9,12 +9,14 @@ export interface IAuthContext {
     authState: IAuth;
     updateAuthState: Function;
     clearAuthState: Function;
+    showLoginModal?: boolean;
 }
 
 export interface IAuth {
     authenticated: boolean;
     user?: any;
     token?: string | null;
+    showLoginModal?: boolean;
 }
 
 const AuthContext = React.createContext<IAuthContext>({

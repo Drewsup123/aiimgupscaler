@@ -10,6 +10,7 @@ export const initialAuthState: IAuth = auth.currentUser?.uid
           user: auth.currentUser,
           token: null,
           authenticated: true,
+          showLoginModal: false,
       }
     : { authenticated: false };
 

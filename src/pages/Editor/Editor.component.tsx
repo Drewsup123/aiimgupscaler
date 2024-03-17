@@ -15,7 +15,7 @@ const Editor = () => {
     const loadedScripts = useRef<boolean>(false);
     useEffect(() => {
         //@ts-ignore
-        if (loadedScripts.current || setantimenakeys !== undefined) return;
+        if (loadedScripts.current) return;
         loadedScripts.current = true;
         // Function to dynamically load a script
         const loadScript = (src: any) => {
