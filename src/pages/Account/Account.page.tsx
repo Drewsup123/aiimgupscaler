@@ -62,7 +62,9 @@ const AccountPage = () => {
                 <h6>Plan: {premiumStatus ? "Premium" : "Free"}</h6>
                 <h6>
                     Usage :{" "}
-                    {premiumStatus ? "Unlimited" : "5 upscales/edits per day"}
+                    {premiumStatus
+                        ? "Unlimited"
+                        : "Basic Editor - No Premium Features"}
                 </h6>
                 <button
                     className={styles.cancelSubscriptionBtn}

@@ -12,18 +12,18 @@ const PrivacyPolicy = () => {
                     preserving your privacy rights. If you have any queries or
                     concerns about this policy or our practices, please reach
                     out to us at support@aiimgtools.com. By accessing our
-                    website at http://aiimgtools.com and utilizing our services,
-                    you are entrusting us with your personal details. We
-                    appreciate this trust and are committed to maintaining your
-                    privacy. This policy outlines our approach to privacy,
+                    website at https://www.aiimgtools.com and utilizing our
+                    services, you are entrusting us with your personal details.
+                    We appreciate this trust and are committed to maintaining
+                    your privacy. This policy outlines our approach to privacy,
                     explaining how we handle your information, what we collect,
                     and your rights related to this information. We encourage
                     you to review this policy carefully. If you disagree with
                     any part of this privacy notice, please refrain from using
                     our website and services. This policy applies to all
                     information gathered through our website,
-                    http://iaiimgtools.com, and any associated services, sales,
-                    marketing, or events (collectively referred to as the
+                    https://www.aiimgtools.com, and any associated services,
+                    sales, marketing, or events (collectively referred to as the
                     “Services” in this notice).
                 </h2>
                 <hr />
@@ -99,12 +99,9 @@ const PrivacyPolicy = () => {
                 </ul>
                 <h3>4. How Are Your Uploaded Images Handled?</h3>
                 <p>
-                    Your uploaded images are processed and enlarged using our AI
-                    network, stored temporarily for 12 hours, and then
-                    permanently deleted. These images will never be used for
-                    other purposes or shared.
+                    Your uploaded images are processed and stored locally. We do
+                    not control 3rd party applications.
                 </p>
-                {/* I STOPPED HERE DOUBLE CHECK THE ABOVE SECTION */}
                 <h3>5. Changes to Terms</h3>
                 <p>
                     These Terms may be updated periodically, with the current

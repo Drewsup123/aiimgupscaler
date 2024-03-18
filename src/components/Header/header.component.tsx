@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import styles from "./header.module.sass";
 import useAuth from "../../hooks/useAuth";
 import { auth, db } from "../../firebase/client";
@@ -15,6 +15,8 @@ const provider = new GoogleAuthProvider();
 
 const Header = () => {
     const { authState, updateAuthState } = useAuth();
+    const location = useLocation();
+    const isEditorPage = location.pathname === "/";
     // const premiumStatus = usePremiumStatus();
 
     const signInWithGoogle = async () => {
@@ -83,73 +85,80 @@ const Header = () => {
             </a>
             {/* Top Bar Menu */}
             <div className="palleon-top-bar-menu">
-                {/* History */}
-                <div className="palleon-undo">
-                    <button
-                        id="palleon-undo"
-                        type="button"
-                        className="palleon-btn-simple tooltip"
-                        data-title="Undo"
-                        // autoComplete="off"
-                        disabled={undefined}
-                    >
-                        <span className="material-icons">undo</span>
-                    </button>
-                </div>
-                <div className="palleon-redo">
-                    <button
-                        id="palleon-redo"
-                        type="button"
-                        className="palleon-btn-simple tooltip"
-                        data-title="Redo"
-                        // autoComplete="off"
-                        disabled={undefined}
-                    >
-                        <span className="material-icons">redo</span>
-                    </button>
-                </div>
-                <div className="palleon-history">
-                    <button
-                        id="palleon-history"
-                        type="button"
-                        className="palleon-btn-simple palleon-modal-open tooltip"
-                        data-title="History"
-                        // autoComplete="off"
-                        data-target="#modal-history"
-                        disabled={undefined}
-                    >
-                        <span className="material-icons">history</span>
-                    </button>
-                </div>
-                {/* New */}
-                <div className="palleon-new">
-                    <button
-                        id="palleon-new"
-                        type="button"
-                        className="palleon-btn primary palleon-modal-open"
-                        // autoComplete="off"
-                        data-target="#modal-add-new"
-                    >
-                        <span className="material-icons">add_circle</span>
-                        <span className="palleon-btn-text">New</span>
-                    </button>
-                </div>
-                {/* Save */}
-                <div className="palleon-save">
-                    <button
-                        id="palleon-save"
-                        type="button"
-                        className="palleon-btn primary palleon-modal-open"
-                        // autoComplete="off"
-                        data-target="#modal-save"
-                        disabled={undefined}
-                    >
-                        <span className="material-icons">save</span>
-                        <span className="palleon-btn-text">
-                            Save or Download
-                        </span>
-                    </button>
-                </div>
+                {isEditorPage && (
+                    <>
+                        {" "}
+                        {/* History */}
+                        <div className="palleon-undo">
+                            <button
+                                id="palleon-undo"
+                                type="button"
+                                className="palleon-btn-simple tooltip"
+                                data-title="Undo"
+                                // autoComplete="off"
+                                disabled={undefined}
+                            >
+                                <span className="material-icons">undo</span>
+                            </button>
+                        </div>
+                        <div className="palleon-redo">
+                            <button
+                                id="palleon-redo"
+                                type="button"
+                                className="palleon-btn-simple tooltip"
+                                data-title="Redo"
+                                // autoComplete="off"
+                                disabled={undefined}
+                            >
+                                <span className="material-icons">redo</span>
+                            </button>
+                        </div>
+                        <div className="palleon-history">
+                            <button
+                                id="palleon-history"
+                                type="button"
+                                className="palleon-btn-simple palleon-modal-open tooltip"
+                                data-title="History"
+                                // autoComplete="off"
+                                data-target="#modal-history"
+                                disabled={undefined}
+                            >
+                                <span className="material-icons">history</span>
+                            </button>
+                        </div>
+                        {/* New */}
+                        <div className="palleon-new">
+                            <button
+                                id="palleon-new"
+                                type="button"
+                                className="palleon-btn primary palleon-modal-open"
+                                // autoComplete="off"
+                                data-target="#modal-add-new"
+                            >
+                                <span className="material-icons">
+                                    add_circle
+                                </span>
+                                <span className="palleon-btn-text">New</span>
+                            </button>
+                        </div>
+                        {/* Save */}
+                        <div className="palleon-save">
+                            <button
+                                id="palleon-save"
+                                type="button"
+                                className="palleon-btn primary palleon-modal-open"
+                                // autoComplete="off"
+                                data-target="#modal-save"
+                                disabled={undefined}
+                            >
+                                <span className="material-icons">save</span>
+                                <span className="palleon-btn-text">
+                                    Save or Download
+                                </span>
+                            </button>
+                        </div>
+                    </>
+                )}
                 {/* User Menu */}
                 {authState.authenticated ? (
                     <Link to="/account">

@@ -48,9 +48,13 @@
         <link href="css/style.css" rel="stylesheet" type="text/css" />
     </head>
     <body id="palleon" class="dark-theme">
-        <div id="root"></div>
+        <!-- <div id="root"></div> -->
         <div class="comingSoon-wrapper">
-            <h1>Coming soon<span class="comingSoon-dot">...</span></h1>
+            <h1>
+                Coming soon<span class="comingSoon-dot">.</span
+                ><span class="comingSoon-dot">.</span
+                ><span class="comingSoon-dot">.</span>
+            </h1>
             <p>All your image editing tools in one place</p>
         </div>
         <!-- Scripts -->
@@ -182,6 +186,31 @@
                 margin: 18px;
                 font-family: "Muli", sans-serif;
                 font-weight: normal;
+            }
+
+            @keyframes wave {
+                0%,
+                100% {
+                    transform: translateY(0);
+                }
+                25% {
+                    transform: translateY(-5px);
+                }
+                75% {
+                    transform: translateY(5px);
+                }
+            }
+
+            .comingSoon-dot:nth-child(1) {
+                animation: wave 1.5s infinite;
+            }
+
+            .comingSoon-dot:nth-child(2) {
+                animation: wave 1.5s infinite 0.5s;
+            }
+
+            .comingSoon-dot:nth-child(3) {
+                animation: wave 1.5s infinite 1s;
             }
         </style>
     </body>
