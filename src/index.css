@@ -2,14 +2,19 @@ body * {
     z-index: 1;
 }
 
+body {
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
 .route {
-    margin-top: 120px;
-    padding: 20px 0px;
-    /* z-index: 5 !important; */
-    /* max-height: calc(100vh - 80px); */
+    box-sizing: border-box;
     overflow-y: auto;
     overflow-x: hidden;
-    /* position: relative; */
+    position: relative;
+    margin-top: 60px;
+    width: 100vw;
+    padding-top: 20px;
 }
 
 @keyframes gradient {

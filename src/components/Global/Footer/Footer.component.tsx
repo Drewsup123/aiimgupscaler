@@ -1,7 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Footer.css";
 
 const Footer = () => {
+    const location = useLocation();
+    const isEditor = location.pathname === "/";
+    const year = new Date().getFullYear();
+
+    if (isEditor) return null;
     return (
         <footer className="footer">
             <div className="waves">
@@ -32,7 +37,7 @@ const Footer = () => {
                     </Link>
                 </li>
             </ul>
-            <p>&copy;2023 AI IMG UPSCALER | All Rights Reserved</p>
+            <p>&copy;{year} Adjacent Web LLC | All Rights Reserved</p>
         </footer>
     );
 };

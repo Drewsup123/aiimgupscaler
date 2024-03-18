@@ -16,7 +16,7 @@ function App() {
     const { authState } = useAuth();
 
     return (
-        <div className="App">
+        <>
             <Header />
             {/* <ul className="bg-bubbles">
                 <li></li>
@@ -44,7 +44,7 @@ function App() {
             <LoginDialog />
             <UpgradeDialog />
             <Footer />
-        </div>
+        </>
     );
 }
 
