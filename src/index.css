@@ -15,6 +15,7 @@ body {
     margin-top: 60px;
     width: 100vw;
     padding-top: 20px;
+    min-height: calc(100vh - 500px);
 }
 
 @keyframes gradient {
