@@ -2553,9 +2553,9 @@ ul.palleon-accordion > li > a > .data-count {
     bottom: 0;
 }
 
-.palleon-masonry-item-inner:hover .palleon-masonry-item-desc {
+/* .palleon-masonry-item-inner:hover .palleon-masonry-item-desc {
     display: block;
-}
+} */
 
 .palleon-svg-library-delete,
 .palleon-library-delete {
