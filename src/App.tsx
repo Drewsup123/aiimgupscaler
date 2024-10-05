@@ -18,18 +18,6 @@ function App() {
     return (
         <>
             <Header />
-            {/* <ul className="bg-bubbles">
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul> */}
             <Routes>
                 <Route path="/" Component={Editor} />
                 <Route

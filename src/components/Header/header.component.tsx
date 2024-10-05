@@ -80,6 +80,7 @@ const Header = () => {
     return (
         <div id="palleon-top-bar">
             {/* Logo */}
+            <img src="/logo.png" alt="logo" style={{height: 50, width: 50, marginLeft: 12}}/>
             <a className="palleon-logo" href="/">
                 AI Img Tools{" "}
             </a>
