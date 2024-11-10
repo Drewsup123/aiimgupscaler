@@ -187,7 +187,7 @@ const ClipdropContent = () => {
                             id="sketch-to-image-generate"
                             type="button"
                             className="palleon-btn primary palleon-lg-btn btn-full"
-                            disabled
+                            // disabled
                         >
                             <span className="material-icons arrow">
                                 landscape
