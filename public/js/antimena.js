@@ -532,7 +532,7 @@ function antimena(selector, canvas) {
                         .find(":selected")
                         .val(),
                     cfg = parseInt(selector.find("#sai-cfg").val()),
-                    steps = parseInt(selector.find("#sai-steps").val());
+                    steps = 30;//parseInt(selector.find("#sai-steps").val());
                 var validSizes = [
                     ["512x512", [512, 512]],
                     ["896x512", [896, 512]],
